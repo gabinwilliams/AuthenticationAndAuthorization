@@ -21,15 +21,15 @@ const useStyles = makeStyles((theme) => ({
 export default function Chips(props) {
   const classes = useStyles();
  
-  // const[tech, setTech] = useState([]);
 
-  // const [chipData, setChipData] = useState([
-  //   { key: 0, label: 'Angular' },
-  //   { key: 1, label: 'jQuery' },
-  //   { key: 2, label: 'Polymer' },
-  //   { key: 3, label: 'React' },
-  //   { key: 4, label: 'Vue.js' },
-  // ]);
+
+  const [chipData, setChipData] = useState([
+    { key: 0, label: 'Angular' },
+    { key: 1, label: 'jQuery' },
+    { key: 2, label: 'Polymer' },
+    { key: 3, label: 'React' },
+    { key: 4, label: 'Vue.js' },
+  ]);
 
   const handleDelete = () => {
     console.info('You clicked the delete icon.');
@@ -38,13 +38,16 @@ export default function Chips(props) {
   const handleClick = (data) => {
     // event.preventDefault()
     console.info('You clicked the Chip:', data);
-    
+    if(props.tech.length < 3) {
+      props.setTech([...props.tech, data])
+    }
+    console.log('this is tech array:', props.tech);
   };
 
   return (
 
     <div component="div" className={classes.root}>
-    {props.chipData.map((data) => {
+    {chipData.map((data) => {
       // let icon;
 
       // if (data.label === 'React') {

@@ -140,7 +140,7 @@ export default function ProfileForm(props) {
           defaultValue="Default Value"
           variant="outlined"
         />
-        <ProfileTech chipData={chipData} tech={tech} tech={setTech} />
+        <ProfileTech tech={tech} setTech={setTech} />
       </div>
       <button onClick={registerUserInfo} >submit</button>
     </form>
