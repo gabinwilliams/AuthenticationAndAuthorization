@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import ProfileImage from '../ProfileImage/ProfileImage';
+import ProfileTech from '../ProfileTech/ProfileTech';
 import TextField from '@material-ui/core/TextField';
 import { makeStyles } from '@material-ui/core/styles';
 import InputLabel from '@material-ui/core/InputLabel';
@@ -31,11 +32,20 @@ export default function ProfileForm(props) {
 
   const user = useSelector((store) => store.user);
 
+  const[tech, setTech] = useState([]);
   const [image, setImage] = useState('');
   const [name, setName] = useState('');
   const [dev, setDev] = useState('');
   const [github, setGithub] = useState('');
   const [bio, setBio] = useState('');
+
+  const [chipData, setChipData] = useState([
+    { key: 0, label: 'Angular' },
+    { key: 1, label: 'jQuery' },
+    { key: 2, label: 'Polymer' },
+    { key: 3, label: 'React' },
+    { key: 4, label: 'Vue.js' },
+  ]);
   
 
   const handleChangeDev = (event) => {
@@ -130,6 +140,7 @@ export default function ProfileForm(props) {
           defaultValue="Default Value"
           variant="outlined"
         />
+        <ProfileTech chipData={chipData} tech={tech} tech={setTech} />
       </div>
       <button onClick={registerUserInfo} >submit</button>
     </form>

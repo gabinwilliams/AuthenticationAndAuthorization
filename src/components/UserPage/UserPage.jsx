@@ -9,7 +9,7 @@ function UserPage() {
   return (
     <div className="container">
       <h2>Welcome, {user.username}!</h2>
-      <p>Your ID is: {user.id}</p>
+      <h4>Let's fill out your profile information so you can start connecting with other developers!</h4>
       <ProfileForm />
       {/* <LogOutButton className="btn" /> */}
     </div>
