@@ -32,6 +32,23 @@ router.post('/register', (req, res, next) => {
     });
 });
 
+router.post('/registerInfo', (req, res) => {
+  // const username = req.body.username;
+  // const password = encryptLib.encryptPassword(req.body.password);
+
+  const queryText = `UPDATE "user" 
+  SET "name" = $1, dev_type = $2, profile_image = $3, bio = $4, github = $5
+  WHERE "user".id = ${req.body.id}
+    `;
+  pool
+    .query(queryText, [req.body.name, req.body.dev_type, req.body.profile_image, req.body.bio, req.body.github])
+    .then(() => res.sendStatus(201))
+    .catch((err) => {
+      console.log('User registration failed: ', err);
+      res.sendStatus(500);
+    });
+});
+
 // Handles login form authenticate/login POST
 // userStrategy.authenticate('local') is middleware that we run on this route
 // this middleware will run our POST if successful

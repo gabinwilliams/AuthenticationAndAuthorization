@@ -7,7 +7,8 @@ import logger from 'redux-logger';
 
 import rootReducer from './redux/reducers/_root.reducer'; // imports ./redux/reducers/index.js
 import rootSaga from './redux/sagas/_root.saga'; // imports ./redux/sagas/index.js
-
+import { takeEvery, put } from "redux-saga/effects";
+import axios from "axios";
 import App from './components/App/App';
 
 const sagaMiddleware = createSagaMiddleware();
