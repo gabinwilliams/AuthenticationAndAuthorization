@@ -21,21 +21,23 @@ const HomeCard = () => {
 
     <div>
       <h1>tinderCards</h1>
-      {people.map(person => (
-        <TinderCard 
-          key={person.name}
-          className="swipe"
-          // prop from tinder-card library to prevent swiping up or down
-          preventSwipe={['up', 'down']}
-        >
-          <div 
-          className='card'
-          style={{backgroundImage: `url(${person.url})`}}
+      <div className="cardContainer">
+        {people.map(person => (
+          <TinderCard 
+            key={person.name}
+            className="swipe"
+            // prop from tinder-card library to prevent swiping up or down
+            preventSwipe={['up', 'down']}
           >
-            <h3>{person.name}</h3>
-          </div>
-        </TinderCard> 
-      ))}
+            <div 
+            className="card"
+            style={{backgroundImage: `url(${person.url})`}}
+            >
+              <h3>{person.name}</h3>
+            </div>
+          </TinderCard> 
+        ))}
+      </div>
     </div>
   );
 };
