@@ -83,6 +83,17 @@ export default function ProfileForm(props) {
         github: github,
       },
     });
+
+    dispatch({
+      type: 'UPDATE_TECH',
+      payload: {
+        user_id: user.id,
+        tech_one: tech[0],
+        tech_two: tech[1],
+        tech_three: tech[2],
+      },
+    });
+
   }; // end registerUser
 
   
