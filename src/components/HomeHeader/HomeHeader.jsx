@@ -1,15 +1,23 @@
-import React from 'react'
-import './HomeHeader.css'
-import PersonIcon from '@material-ui/icons/Person';
-import ForumIcon from '@material-ui/icons/Forum';
+import React from "react";
+import "./HomeHeader.css";
+import PersonIcon from "@material-ui/icons/Person";
+import ForumIcon from "@material-ui/icons/Forum";
+import IconButton from "@material-ui/core/IconButton";
+
 const HomeHeader = () => {
   return (
-    <div className='header'>
-      <PersonIcon />
-      <img src="../../../public/Images/Front to Back logo.png" alt="logo image"/>
-      <ForumIcon />
-    </div>
-  )
-}
+    <div className="header">
+      <IconButton>
+        <PersonIcon className="headerIcon" fontSize="large" />
+      </IconButton>
 
-export default HomeHeader
+      <h2>Front to Back</h2>
+
+      <IconButton>
+        <ForumIcon className="headerIcon" fontSize="large" />
+      </IconButton>
+    </div>
+  );
+};
+
+export default HomeHeader;
