@@ -5,7 +5,7 @@ import HomeCard from "../HomeCard/HomeCard";
 
 const Home = () => {
   return (
-    <div>
+    <div className="homeContainer">
       <HomeHeader />
       <HomeCard />
       {/* Buttons below tinder card */}
