@@ -1,6 +1,8 @@
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
 import TinderCard from 'react-tinder-card';
 import './HomeCard.css';
+
+
 
 const HomeCard = () => {
 
@@ -17,10 +19,27 @@ const HomeCard = () => {
 
   ]);
 
+  useEffect(() => {
+    // getGalleryItems();
+  }, []);
+
+  // GET REQUEST for GalleryList
+  // const getUserCards = () => {
+  //   axios
+  //     .get("/gallery")
+  //     .then((response) => {
+  //       setGalleryList(response.data);
+  //       console.log(response.data);
+  //     })
+  //     .catch((err) => {
+  //       console.log(err);
+  //     });
+  // };
+
   return (
 
     <div>
-      <h1>tinderCards</h1>
+      
       <div className="cardContainer">
         {people.map(person => (
           <TinderCard 
