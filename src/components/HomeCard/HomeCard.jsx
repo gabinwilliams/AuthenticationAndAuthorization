@@ -1,11 +1,14 @@
 import React, {useState, useEffect} from "react";
+import { useDispatch, useSelector } from "react-redux";
 import TinderCard from 'react-tinder-card';
 import './HomeCard.css';
 
 
 
 const HomeCard = () => {
+  const dispatch = useDispatch();
 
+  const userProfiles = useSelector((store) => store.userProfiles);
   const [people, setPeople] = useState([
 
     {
@@ -20,7 +23,7 @@ const HomeCard = () => {
   ]);
 
   useEffect(() => {
-    // getGalleryItems();
+    dispatch({ type: "FETCH_CARDS" });
   }, []);
 
   // GET REQUEST for GalleryList
@@ -36,12 +39,14 @@ const HomeCard = () => {
   //     });
   // };
 
+  
+console.log(userProfiles);
   return (
 
     <div>
       
       <div className="cardContainer">
-        {people.map(person => (
+        {userProfiles.map(person => (
           <TinderCard 
             key={person.name}
             className="swipe"
@@ -50,7 +55,8 @@ const HomeCard = () => {
           >
             <div 
             className="card"
-            style={{backgroundImage: `url(${person.url})`}}
+              
+            style={{backgroundImage: `url(${person.profile_image})`}}
             >
               <h3>{person.name}</h3>
             </div>
