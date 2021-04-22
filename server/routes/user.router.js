@@ -37,11 +37,11 @@ router.post('/registerInfo', (req, res) => {
   // const password = encryptLib.encryptPassword(req.body.password);
 
   const queryText = `UPDATE "user" 
-  SET "name" = $1, dev_type = $2, profile_image = $3, bio = $4, github = $5
+  SET "name" = $1, dev_type = $2, profile_image = $3, bio = $4, github = $5, tech_one = $6, tech_two = $7, tech_three = $8, active = $9
   WHERE "user".id = ${req.body.id}
     `;
   pool
-    .query(queryText, [req.body.name, req.body.dev_type, req.body.profile_image, req.body.bio, req.body.github])
+    .query(queryText, [req.body.name, req.body.dev_type, req.body.profile_image, req.body.bio, req.body.github, req.body.tech_one, req.body.tech_two, req.body.tech_three, req.body.active])
     .then(() => res.sendStatus(201))
     .catch((err) => {
       console.log('User registration failed: ', err);
@@ -49,20 +49,20 @@ router.post('/registerInfo', (req, res) => {
     });
 });
 
-router.post('/updateTech', (req, res) => {
-  // const username = req.body.username;
-  // const password = encryptLib.encryptPassword(req.body.password);
+// router.post('/updateTech', (req, res) => {
+//   // const username = req.body.username;
+//   // const password = encryptLib.encryptPassword(req.body.password);
 
-  const queryText = `INSERT INTO "user_tech" (user_id, tech_one, tech_two, tech_three)
-    VALUES ($1, $2, $3, $4) `;
-  pool
-    .query(queryText, [req.body.user_id, req.body.tech_one, req.body.tech_two, req.body.tech_three])
-    .then(() => res.sendStatus(201))
-    .catch((err) => {
-      console.log('User registration failed: ', err);
-      res.sendStatus(500);
-    });
-});
+//   const queryText = `INSERT INTO "user_tech" (user_id, tech_one, tech_two, tech_three)
+//     VALUES ($1, $2, $3, $4) `;
+//   pool
+//     .query(queryText, [req.body.user_id, req.body.tech_one, req.body.tech_two, req.body.tech_three])
+//     .then(() => res.sendStatus(201))
+//     .catch((err) => {
+//       console.log('User registration failed: ', err);
+//       res.sendStatus(500);
+//     });
+// });
 
 // Handles login form authenticate/login POST
 // userStrategy.authenticate('local') is middleware that we run on this route
