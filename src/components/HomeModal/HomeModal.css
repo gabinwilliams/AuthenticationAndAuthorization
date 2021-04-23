@@ -1,0 +1,32 @@
+.modalBtn {
+  position: absolute;
+  margin: 10px 5px;
+  padding: 5px;
+  font-size: 16px;
+  border-radius: 25px;
+  background-color: rgba(186, 186, 182, .5);
+}
+
+.modalTech {
+   display: flex;
+  
+}
+
+.modalTechChip{
+  margin: 10px 5px;
+  padding: 5px;
+  font-size: 12px;
+  border-radius: 25px;
+  background-color: rgba(186, 186, 182, .5);
+}
+
+.imageContainer {
+  margin-bottom: 10px;
+  width: 150px;
+  height: 100px;
+  box-shadow: 0px 18px 20px 0px rgba(0, 0, 0, 0.3);
+  
+}
+img {
+  border-radius: 10px;
+}

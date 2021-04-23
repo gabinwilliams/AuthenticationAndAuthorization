@@ -1,4 +1,5 @@
 import React from "react";
+import LogOutButton from '../LogOutButton/LogOutButton';
 import "./HomeHeader.css";
 import PersonIcon from "@material-ui/icons/Person";
 import ForumIcon from "@material-ui/icons/Forum";
@@ -12,6 +13,7 @@ const HomeHeader = () => {
       </IconButton>
 
       <h2>Front to Back</h2>
+      <LogOutButton />
 
       <IconButton>
         <ForumIcon className="headerIcon" fontSize="large" />

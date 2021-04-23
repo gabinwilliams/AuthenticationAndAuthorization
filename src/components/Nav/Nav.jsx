@@ -13,7 +13,7 @@ function Nav() {
   };
 
   if (user.id != null) {
-    loginLinkData.path = '/user';
+    loginLinkData.path = '/mainView';
     loginLinkData.text = 'Home';
   }
 
