@@ -49,20 +49,21 @@ router.post('/registerInfo', (req, res) => {
     });
 });
 
-// router.post('/updateTech', (req, res) => {
-//   // const username = req.body.username;
-//   // const password = encryptLib.encryptPassword(req.body.password);
+router.post('/updateLikes', (req, res) => {
+  // const username = req.body.username;
+  // const password = encryptLib.encryptPassword(req.body.password);
 
-//   const queryText = `INSERT INTO "user_tech" (user_id, tech_one, tech_two, tech_three)
-//     VALUES ($1, $2, $3, $4) `;
-//   pool
-//     .query(queryText, [req.body.user_id, req.body.tech_one, req.body.tech_two, req.body.tech_three])
-//     .then(() => res.sendStatus(201))
-//     .catch((err) => {
-//       console.log('User registration failed: ', err);
-//       res.sendStatus(500);
-//     });
-// });
+  console.log('In POST /updateLikes', req.body);
+  const queryText = `INSERT INTO "user_likes" (user_id, liked, liked_user_id)
+    VALUES ($1, $2, $3) `;
+  pool
+    .query(queryText, [req.body.user_id, req.body.liked, req.body.liked_user_id])
+    .then(() => res.sendStatus(201))
+    .catch((err) => {
+      console.log('error in POST updateLikes ', err);
+      res.sendStatus(500);
+    });
+});
 
 // Handles login form authenticate/login POST
 // userStrategy.authenticate('local') is middleware that we run on this route
