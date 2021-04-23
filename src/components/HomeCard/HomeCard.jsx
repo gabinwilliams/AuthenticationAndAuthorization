@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from "react";
 import { useDispatch, useSelector } from "react-redux";
+import HomeModal from '../HomeModal/HomeModal';
 import TinderCard from 'react-tinder-card';
 import axios from "axios";
 import './HomeCard.css';
@@ -12,6 +13,7 @@ const HomeCard = () => {
   const user = useSelector((store) => store.user);
   const userLikes = useSelector((store) => store.userLikes);
   const userProfiles = useSelector((store) => store.userProfiles);
+  const [open, setOpen] = useState(false);
   
   
  
@@ -34,7 +36,7 @@ const HomeCard = () => {
     console.log('You swiped: ', direction)
     console.log('You swiped:', id);
 
-      if(direction == 'right') {
+      if(direction === 'right') {
         direction = true;
         let obj = {
           user_id: user.id,
@@ -52,7 +54,7 @@ const HomeCard = () => {
       });
       // dispatch({type: "UPDATE_LIKES", payload: true})
     }
-      if(direction == 'left') {
+      if(direction === 'left') {
         direction = false;
 
         let obj = {
@@ -69,8 +71,13 @@ const HomeCard = () => {
         console.log("Error in POST", err);
       });
 
+      if(direction == 'up') {
+          console.log('Just swiped up!');
+          setOpen(false);
+          console.log('Should be true: ', open);
+      }
 
-        // dispatch({type: "UPDATE_LIKES", payload: false})
+        
       
       }
       
@@ -106,13 +113,16 @@ const HomeCard = () => {
 
   
   return (
-
+    
     <div>
       
-      <div className="cardContainer">
-        {profileArray.map(person => (
-
+      
     
+      
+       
+      <div className="cardContainer">
+      
+        {profileArray.map(person => (
 
           <TinderCard 
             key={person.name}
@@ -123,11 +133,13 @@ const HomeCard = () => {
             // prop from tinder-card library to prevent swiping up or down
             preventSwipe={['up', 'down']}
           >
+            
             <div 
             className="card"
               
             style={{backgroundImage: `url(${person.profile_image})`}}
             >
+              <HomeModal open={open} setOpen={setOpen} person={person}/>
               <h3 className="name">{person.name}</h3>
               <div className="techContainer">
                 <h4 className="techChip">{person.tech_one}</h4>
@@ -137,9 +149,12 @@ const HomeCard = () => {
             </div>
           </TinderCard> 
         ))}
+        
       </div>
+
     </div>
   );
+        
 };
 
 export default HomeCard;
