@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from "react";
 import { useDispatch, useSelector } from "react-redux";
 import TinderCard from 'react-tinder-card';
+import axios from "axios";
 import './HomeCard.css';
 
 
@@ -13,39 +14,81 @@ const HomeCard = () => {
   const userProfiles = useSelector((store) => store.userProfiles);
   
   
+ 
 
   useEffect(() => {
     dispatch({ type: "FETCH_CARDS" });
-    
-  }, []);
+
+  }, [] );
+
+
+  
+  useEffect(() => {
+
+  })
+
 
  
 
-  const onSwipe = (direction) => { 
+  const onSwipe = (id, direction) => { 
     console.log('You swiped: ', direction)
-    
-      if(direction === 'right') {
-       
-      dispatch({type: "UPDATE_LIKES", payload: true})
+    console.log('You swiped:', id);
+
+      if(direction == 'right') {
+        direction = true;
+        let obj = {
+          user_id: user.id,
+          liked: direction,
+          liked_user_id: id
+        }
+
+        axios
+      .post("/api/user/updateLikes", obj)
+      .then((response) => {
+        console.log('POST obj from Swipe:', response);
+      })
+      .catch((err) => {
+        console.log("Error in POST", err);
+      });
+      // dispatch({type: "UPDATE_LIKES", payload: true})
     }
-      if(direction === 'left') {
-        dispatch({type: "UPDATE_LIKES", payload: false})
+      if(direction == 'left') {
+        direction = false;
+
+        let obj = {
+          user_id: user.id,
+          liked: direction,
+          liked_user_id: id
+        }
+        axios
+      .post("/api/user/updateLikes", obj)
+      .then((response) => {
+        console.log('POST obj from Swipe:', response);
+      })
+      .catch((err) => {
+        console.log("Error in POST", err);
+      });
+
+
+        // dispatch({type: "UPDATE_LIKES", payload: false})
+      
       }
       
   }
   
-  const onCardLeftScreen = (myIdentifier) => {
-    console.log(myIdentifier, ' left the screen')
+  // const onCardLeftScreen = (myIdentifier) => {
+  //   console.log(myIdentifier, ' left the screen')
+
+  //   dispatch({type: "UPDATE_LIKED_ID", payload: myIdentifier})
     
-    dispatch({type: "UPDATE_LIKED_ID", payload: myIdentifier})
-   
-  }
+    
+  // }
 
-  const sendLikesObject = () => {
-    console.log('Current user likes: ', userLikes);
+  // const sendLikesObject = () => {
+  //   console.log('Current user likes: ', userLikes);
 
-    dispatch({type: "UPDATE_LIKED_OBJECT", payload: userLikes})
-  }
+  //   dispatch({type: "UPDATE_LIKED_OBJECT", payload: userLikes})
+  // }
   
   
   const removeLoggedUserFromArray = () => {
@@ -74,8 +117,8 @@ const HomeCard = () => {
           <TinderCard 
             key={person.name}
             className="swipe"
-            onSwipe={onSwipe}
-            onCardLeftScreen={() => onCardLeftScreen( person.id)}
+            // onCardLeftScreen={() => onCardLeftScreen( person.id)}
+            onSwipe={(direction) => onSwipe(person.id, direction)}
             
             // prop from tinder-card library to prevent swiping up or down
             preventSwipe={['up', 'down']}
