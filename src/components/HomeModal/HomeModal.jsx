@@ -64,9 +64,7 @@ Fade.propTypes = {
 export default function SpringModal(props) {
   const classes = useStyles();
   
-  const user = useSelector((store) => store.user);
-  const userLikes = useSelector((store) => store.userLikes);
-  const userProfiles = useSelector((store) => store.userProfiles);
+
 
   const handleOpen = () => {
     props.setOpen(true);
@@ -108,9 +106,19 @@ export default function SpringModal(props) {
               <p className="modalTechChip">{props.person.tech_two}</p>
               <p className="modalTechChip">{props.person.tech_three}</p>
             </div>
+            <div className="bioContainer">
+              <p>{props.person.bio}</p>
+            </div>
+            <div className="githubContainer">
+              <div className="devType">
+                <p className="github">{props.person.dev_type}</p>
+              </div>
+              <div className="devType">
+                <p className="github">{props.person.github}</p>
+              </div>
+            </div>
           
-            <h2 id="spring-modal-title">Spring modal</h2>
-            <p id="spring-modal-description">react-spring animates me.</p>
+            
           </div>
         </Fade>
       </Modal>
