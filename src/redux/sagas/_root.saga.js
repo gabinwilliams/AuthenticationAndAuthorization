@@ -19,7 +19,7 @@ export default function* rootSaga() {
     userSaga(),
     profileInfoSaga(),
     fetchCardsSaga(),
-
+    
     
   ]);
 }
