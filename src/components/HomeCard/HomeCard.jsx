@@ -9,25 +9,44 @@ const HomeCard = () => {
   const dispatch = useDispatch();
 
   const user = useSelector((store) => store.user);
+  const userLikes = useSelector((store) => store.userLikes);
   const userProfiles = useSelector((store) => store.userProfiles);
-  // const [people, setPeople] = useState([
-
-  //   {
-  //     name: 'Steve Jobs',
-  //     url: 'https://hs-marketing.imgix.net/images/blog/steve-jobs.jpg?auto=compress&fit=scale&w=1200&h=673&dpr=1',
-  //   },
-  //   {
-  //     name: 'batman',
-  //     url: 'https://cdn2.unrealengine.com/Diesel%2Fproductv2%2Fbatman-arkham-knight%2FEGS_WB_Batman_Arkham_Knight_G1_1920x1080_19_0911-1920x1080-1d69e15f00cb5ab57249f208f1f8f45d52cbbc59.jpg?h=1080&resize=1&w=1920',
-  //   }
-
-  // ]);
+  
+  
 
   useEffect(() => {
     dispatch({ type: "FETCH_CARDS" });
     
   }, []);
 
+ 
+
+  const onSwipe = (direction) => { 
+    console.log('You swiped: ', direction)
+    
+      if(direction === 'right') {
+       
+      dispatch({type: "UPDATE_LIKES", payload: true})
+    }
+      if(direction === 'left') {
+        dispatch({type: "UPDATE_LIKES", payload: false})
+      }
+      
+  }
+  
+  const onCardLeftScreen = (myIdentifier) => {
+    console.log(myIdentifier, ' left the screen')
+    
+    dispatch({type: "UPDATE_LIKED_ID", payload: myIdentifier})
+   
+  }
+
+  const sendLikesObject = () => {
+    console.log('Current user likes: ', userLikes);
+
+    dispatch({type: "UPDATE_LIKED_OBJECT", payload: userLikes})
+  }
+  
   
   const removeLoggedUserFromArray = () => {
 
@@ -38,9 +57,9 @@ const HomeCard = () => {
   const profileArray = removeLoggedUserFromArray();
 
   
-  removeLoggedUserFromArray();
+ 
   
-console.log(userProfiles);
+
 
   
   return (
@@ -55,6 +74,9 @@ console.log(userProfiles);
           <TinderCard 
             key={person.name}
             className="swipe"
+            onSwipe={onSwipe}
+            onCardLeftScreen={() => onCardLeftScreen( person.id)}
+            
             // prop from tinder-card library to prevent swiping up or down
             preventSwipe={['up', 'down']}
           >
