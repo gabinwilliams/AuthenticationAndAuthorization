@@ -115,8 +115,8 @@ export default function ProfileForm(props) {
           <ProfileEditImage image={image} setImage={setImage}/>
           
           <TextField
-            required
-            id="outlined-required"
+            
+            id="outlined-search" type="search"
             onChange={handleChangeName}
             label="Name"
             helperText="Name shown on profile"
@@ -141,8 +141,8 @@ export default function ProfileForm(props) {
           </Select>
         </FormControl>
           <TextField
-            required
-            id="outlined-required"
+            
+            id="outlined-search" type="search"
             onChange={handleChangeGithub}
             label="Github"
             helperText="Visible to connections only"
