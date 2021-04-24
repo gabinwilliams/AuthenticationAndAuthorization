@@ -1,3 +1,8 @@
+p {
+  margin: 0px;
+  padding: 0px;
+}
+
 .modalBtn {
   position: absolute;
   margin: 10px 5px;
@@ -19,6 +24,32 @@
   border-radius: 25px;
   background-color: rgba(186, 186, 182, .5);
 }
+.bioContainer {
+  display: flex;
+  width: 75vw;
+  height: 30vh;
+  border-radius: 5px;
+  padding: 5px;
+  background-color: rgba(170, 175, 173, .2);
+}
+
+.githubContainer {
+  color: white;
+ display: flex;
+  
+}
+
+.devType {
+  background-color: teal;
+  margin: 0 10px;
+  border-radius: 5px;
+  
+}
+
+.github {
+  padding: 0 5px;
+}
+
 
 .imageContainer {
   margin-bottom: 10px;
