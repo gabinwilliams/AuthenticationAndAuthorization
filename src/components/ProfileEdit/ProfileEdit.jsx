@@ -145,7 +145,7 @@ export default function ProfileForm(props) {
             onChange={handleChangeGithub}
             label="Github"
             helperText="Visible to connections only"
-            defaultValue=""
+            defaultValue={user.github}
             variant="outlined"
           />
           
@@ -153,10 +153,10 @@ export default function ProfileForm(props) {
           <TextField
             id="outlined-multiline-static"
             onChange={handleChangeBio}
-            label="Multiline"
+            label="Bio"
             multiline
             rows={4}
-            defaultValue="Default Value"
+            defaultValue={user.bio}
             variant="outlined"
           />
           <ProfileTech tech={tech} setTech={setTech} />
