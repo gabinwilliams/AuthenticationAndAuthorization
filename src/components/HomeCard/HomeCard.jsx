@@ -21,7 +21,7 @@ const HomeCard = () => {
   useEffect(() => {
     dispatch({ type: "FETCH_CARDS" });
 
-  }, [] );
+  }, [dispatch] );
 
 
   
@@ -90,7 +90,7 @@ const HomeCard = () => {
     
     return newArray;
   }
-  const profileArray = removeLoggedUserFromArray();
+  let profileArray = removeLoggedUserFromArray();
 
   
  

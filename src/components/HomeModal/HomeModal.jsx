@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import './HomeModal.css';
 import PropTypes from 'prop-types';
 import { useDispatch, useSelector } from "react-redux";
@@ -61,17 +61,17 @@ Fade.propTypes = {
   onExited: PropTypes.func,
 };
 
-export default function SpringModal(props) {
+export default function HomeModal(props) {
   const classes = useStyles();
-  
+  const [open, setOpen] = useState(false);
 
 
   const handleOpen = () => {
-    props.setOpen(true);
+    setOpen(true);
   };
 
   const handleClose = () => {
-    props.setOpen(false);
+    setOpen(false);
   };
 
   return (
@@ -88,7 +88,7 @@ export default function SpringModal(props) {
         aria-labelledby="spring-modal-title"
         aria-describedby="spring-modal-description"
         className={classes.modal}
-        open={props.open}
+        open={open}
         onClose={handleClose}
         closeAfterTransition
         BackdropComponent={Backdrop}
@@ -96,7 +96,7 @@ export default function SpringModal(props) {
           timeout: 500,
         }}
       >
-        <Fade in={props.open}>
+        <Fade in={open}>
           <div className={classes.paper}>
             <div className="imageContainer">
               <img src={props.person.profile_image} alt="Profile Photo"/>
