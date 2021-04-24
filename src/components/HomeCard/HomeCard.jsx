@@ -34,7 +34,7 @@ const HomeCard = () => {
 
   const onSwipe = (id, direction) => { 
     console.log('You swiped: ', direction)
-    console.log('You swiped:', id);
+   
 
       if(direction === 'right') {
         direction = true;
@@ -83,25 +83,13 @@ const HomeCard = () => {
       
   }
   
-  // const onCardLeftScreen = (myIdentifier) => {
-  //   console.log(myIdentifier, ' left the screen')
-
-  //   dispatch({type: "UPDATE_LIKED_ID", payload: myIdentifier})
-    
-    
-  // }
-
-  // const sendLikesObject = () => {
-  //   console.log('Current user likes: ', userLikes);
-
-  //   dispatch({type: "UPDATE_LIKED_OBJECT", payload: userLikes})
-  // }
+ 
   
   
   const removeLoggedUserFromArray = () => {
 
     let newArray = userProfiles.filter(data => data.id != user.id);
-    console.log('New state Array: ', newArray); 
+    
     return newArray;
   }
   const profileArray = removeLoggedUserFromArray();
