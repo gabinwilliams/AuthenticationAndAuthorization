@@ -90,7 +90,7 @@ const HomeCard = () => {
     
     return newArray;
   }
-  const profileArray = removeLoggedUserFromArray();
+  let profileArray = removeLoggedUserFromArray();
 
   
  
