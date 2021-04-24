@@ -25,9 +25,7 @@ const HomeCard = () => {
 
 
   
-  useEffect(() => {
-
-  })
+ 
 
 
  

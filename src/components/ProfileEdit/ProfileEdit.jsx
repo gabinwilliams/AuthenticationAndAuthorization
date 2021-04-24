@@ -11,6 +11,7 @@ import MenuItem from '@material-ui/core/MenuItem';
 import FormHelperText from '@material-ui/core/FormHelperText';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
+import './ProfileEdit.css';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -109,7 +110,7 @@ export default function ProfileForm(props) {
       <ProfileEditHeader/>
       <form className={classes.root} noValidate autoComplete="off">
         
-        <div>
+        <div className="formContainer">
           
           <ProfileEditImage image={image} setImage={setImage}/>
           
