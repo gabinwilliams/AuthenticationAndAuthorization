@@ -20,6 +20,7 @@ import LandingPage from '../LandingPage/LandingPage';
 import LoginPage from '../LoginPage/LoginPage';
 import RegisterPage from '../RegisterPage/RegisterPage';
 import Home from '../Home/Home';
+import ProfileEdit from '../ProfileEdit/ProfileEdit';
 
 import './App.css';
 
@@ -73,6 +74,14 @@ function App() {
             path="/info"
           >
             <InfoPage />
+          </ProtectedRoute>
+
+          <ProtectedRoute
+            
+            exact
+            path="/profileEdit"
+          >
+            <ProfileEdit />
           </ProtectedRoute>
 
           {/* When a value is supplied for the authRedirect prop the user will
