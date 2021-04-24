@@ -21,7 +21,7 @@ const HomeCard = () => {
   useEffect(() => {
     dispatch({ type: "FETCH_CARDS" });
 
-  }, [] );
+  }, [dispatch] );
 
 
   
