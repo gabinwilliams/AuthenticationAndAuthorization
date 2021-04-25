@@ -21,7 +21,8 @@ const HomeHeader = () => {
       </IconButton>
 
       <h2>Front to Back</h2>
-      <LogOutButton />
+
+      {/* <LogOutButton /> */}
 
       <IconButton>
         <ForumIcon className="headerIcon" fontSize="large" />

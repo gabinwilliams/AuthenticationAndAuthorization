@@ -4,14 +4,16 @@ import HomeModal from '../HomeModal/HomeModal';
 import TinderCard from 'react-tinder-card';
 import axios from "axios";
 import './HomeCard.css';
+import { array } from "prop-types";
 
 
 
 const HomeCard = () => {
   const dispatch = useDispatch();
-
+  
+  
   const user = useSelector((store) => store.user);
-  const userLikes = useSelector((store) => store.userLikes);
+  const fetchUserLikes = useSelector((store) => store.fetchUserLikes);
   const userProfiles = useSelector((store) => store.userProfiles);
   const [open, setOpen] = useState(false);
   
@@ -20,15 +22,10 @@ const HomeCard = () => {
 
   useEffect(() => {
     dispatch({ type: "FETCH_CARDS" });
+    dispatch({ type: 'FETCH_LIKES'});
 
   }, [dispatch] );
 
-
-  
- 
-
-
- 
 
   const onSwipe = (id, direction) => { 
     console.log('You swiped: ', direction)
@@ -46,11 +43,13 @@ const HomeCard = () => {
       .post("/api/user/updateLikes", obj)
       .then((response) => {
         console.log('POST obj from Swipe:', response);
+        // dispatch({type: 'FETCH_USER_LIKES'})
+        dispatch({type: 'FETCH_LIKES'});
       })
       .catch((err) => {
         console.log("Error in POST", err);
       });
-      // dispatch({type: "UPDATE_LIKES", payload: true})
+      
     }
       if(direction === 'left') {
         direction = false;
@@ -64,33 +63,65 @@ const HomeCard = () => {
       .post("/api/user/updateLikes", obj)
       .then((response) => {
         console.log('POST obj from Swipe:', response);
+        
       })
       .catch((err) => {
         console.log("Error in POST", err);
       });
 
-      if(direction == 'up') {
-          console.log('Just swiped up!');
-          setOpen(false);
-          console.log('Should be true: ', open);
-      }
+     
 
         
       
       }
       
   }
-  
- 
-  
-  
-  const removeLoggedUserFromArray = () => {
-
-    let newArray = userProfiles.filter(data => data.id != user.id);
+  const filterArray = () => {
     
-    return newArray;
+    let likedArray = fetchUserLikes.filter(data => data.user_id == user.id && data.liked == true);
+    let newArray = userProfiles.filter(data => data.id != user.id);
+
+  //   let finalArray = newArray;
+    
+
+  //   if(fetchUserLikes.length != 0) {
+
+  //     for(let i = 0; i < newArray.length; i++) {
+  //       for(let z = 0; z < likedArray.length; z++) {
+  //           if(likedArray[z].liked === true) {
+  //               let idToRemove = likedArray[z].liked_user_id;
+  //               // console.log(idToRemove);
+  //               // newArray.filter(data => data.id != idToRemove)
+  //               //  finalArray.splice(finalArray[i]-1, 1);
+                  
+
+  //                 console.log('Array after splice:', newArray);
+                
+                
+                
+  //           }
+  //       }// end for z
+  //   }// end for i
+  //   console.log('new array to return', newArray);
+  //   return newArray;
+  // }// end if to run logic
+  console.log('returned the normal array because not likes yet', newArray);
+  return newArray;
   }
-  let profileArray = removeLoggedUserFromArray();
+  // console.log('This is new filtered array: ', filterArray());
+
+  let profileArray = filterArray();
+  
+  
+  // const removeLoggedUserFromArray = () => {
+    
+  //   let newArray = userProfiles.filter(data => data.id != user.id);
+  //   // console.log('This is new likedArray', likedArray);
+
+
+  //   return newArray;
+  // }
+  // let profileArray = removeLoggedUserFromArray();
 
   
  
