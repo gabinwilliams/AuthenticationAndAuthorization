@@ -17,14 +17,14 @@ function* getUserProfiles() {
 
 }
 
-function* getUserLikes() {
+function* fetchUserLikes() {
   try {
     // clear any existing error on the registration page
     // yield put({ type: 'CLEAR_REGISTRATION_ERROR' });
     // passes the username and password from the payload to the server
-    const userLikes = yield axios.get('/api/profile');
-      console.log('GET if getting:', profiles.data);
-      yield put({ type: "FETCH_PROFILES", payload: profiles.data });
+    const userLikes = yield axios.get('/api/profile/likes');
+      console.log('GET if getting:', userLikes.data);
+      yield put({ type: "FETCH_USER_LIKES", payload: userLikes.data });
   } catch {
     console.log('Error in GET getProfiles');
     
@@ -36,7 +36,7 @@ function* getUserLikes() {
 
 function* fetchCardsSaga() {
   yield takeLatest('FETCH_CARDS', getUserProfiles);
-  yield takeLatest('FETCH_USER_LIKES', getUserLikes);
+  yield takeLatest('FETCH_LIKES', fetchUserLikes);
   
 }
 
