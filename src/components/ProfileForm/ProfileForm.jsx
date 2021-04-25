@@ -1,7 +1,9 @@
 import React, {useState, useEffect} from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 import ProfileImage from '../ProfileImage/ProfileImage';
 import ProfileTech from '../ProfileTech/ProfileTech';
+import ProfileTechChip from '../ProfileTechChip/ProfileTechChip';
 import TextField from '@material-ui/core/TextField';
 import { makeStyles } from '@material-ui/core/styles';
 import InputLabel from '@material-ui/core/InputLabel';
@@ -9,9 +11,11 @@ import MenuItem from '@material-ui/core/MenuItem';
 import FormHelperText from '@material-ui/core/FormHelperText';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
+import './ProfileForm.css';
 
 const useStyles = makeStyles((theme) => ({
   root: {
+    
     '& .MuiTextField-root': {
       margin: theme.spacing(1),
       width: '25ch',
@@ -29,7 +33,7 @@ const useStyles = makeStyles((theme) => ({
 export default function ProfileForm(props) {
   const classes = useStyles();
   const dispatch = useDispatch();
-
+  const history = useHistory();
   const user = useSelector((store) => store.user);
 
  
@@ -90,7 +94,7 @@ export default function ProfileForm(props) {
       },
     });
 
-   
+   history.push('/mainView');
 
   }; 
 
@@ -99,7 +103,7 @@ export default function ProfileForm(props) {
   return (
     <form className={classes.root} noValidate autoComplete="off">
       
-      <div>
+      <div className="formContainer">
         
         <ProfileImage image={image} setImage={setImage}/>
         
@@ -143,15 +147,18 @@ export default function ProfileForm(props) {
          <TextField
           id="outlined-multiline-static"
           onChange={handleChangeBio}
-          label="Multiline"
+          label="Bio"
           multiline
           rows={4}
-          defaultValue="Default Value"
+          defaultValue=""
           variant="outlined"
         />
-        <ProfileTech tech={tech} setTech={setTech} />
+        {/* <ProfileTech tech={tech} setTech={setTech} /> */}
+        <ProfileTechChip tech={tech} setTech={setTech}/>
+        <button className="submitBtn" onClick={registerUserInfo} >submit</button>
       </div>
-      <button onClick={registerUserInfo} >submit</button>
+      {/* <button onClick={registerUserInfo} >submit</button> */}
+      {/* <button className="submitBtn" onClick={registerUserInfo} >submit</button> */}
     </form>
   );
 }
