@@ -69,7 +69,7 @@ export default function MultipleSelect(props) {
   
   const handleChange = (event) => {
     console.log(props.personName);
-    props.setPersonName(event.target.value);
+    props.setTech(event.target.value);
   
 
   
@@ -98,7 +98,7 @@ export default function MultipleSelect(props) {
           labelId="demo-multiple-chip-label"
           id="demo-multiple-chip"
           multiple
-          value={props.personName}
+          value={props.tech}
           onChange={handleChange}
           input={<Input id="select-multiple-chip" />}
           renderValue={(selected) => (
@@ -111,7 +111,7 @@ export default function MultipleSelect(props) {
           MenuProps={MenuProps}
         >
           {names.map((name) => (
-            <MenuItem key={name} value={name} style={getStyles(name, props.personName, theme)}>
+            <MenuItem key={name} value={name} style={getStyles(name, props.tech, theme)}>
               {name}
             </MenuItem>
           ))}
@@ -120,7 +120,7 @@ export default function MultipleSelect(props) {
 
       <p>{user.tech_one}</p>
       <p>{user.tech_two}</p>
-      <p>{props.personName[0]}</p>
+      <p>{props.tech[0]}</p>
       
     </div>
   );
