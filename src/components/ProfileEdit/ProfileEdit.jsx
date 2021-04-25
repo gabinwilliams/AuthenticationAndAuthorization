@@ -116,22 +116,22 @@ export default function ProfileForm(props) {
 
     
 
-    // dispatch({
-    //   type: 'UPDATE_PROFILE',
-    //   payload: {
-    //     id: user.id,
-    //     username: user.username,
-    //     name: name,
-    //     dev_type: dev,
-    //     tech_one: tech[0],
-    //     tech_two: tech[1],
-    //     tech_three: tech[2],
-    //     profile_image: image,
-    //     bio: bio,
-    //     github: github,
-    //     active: true,
-    //   },
-    // });
+    dispatch({
+      type: 'UPDATE_PROFILE',
+      payload: {
+        id: user.id,
+        username: user.username,
+        name: newName,
+        dev_type: newDev,
+        tech_one: newTechOne,
+        tech_two: newTechTwo,
+        tech_three: newTechThree,
+        profile_image: newImage,
+        bio: newBio,
+        github: newGithub,
+        active: true,
+      },
+    });
     
 
       console.log('This is Object to send after changes:', {
