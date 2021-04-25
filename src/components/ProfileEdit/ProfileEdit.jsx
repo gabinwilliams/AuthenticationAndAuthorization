@@ -1,6 +1,6 @@
 
 import ProfileEditHeader from '../ProfileEditHeader/ProfileEditHeader';
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import ProfileEditImage from '../ProfileEditImage/ProfileEditImage';
 import ProfileTech from '../ProfileTech/ProfileTech';
@@ -11,6 +11,7 @@ import MenuItem from '@material-ui/core/MenuItem';
 import FormHelperText from '@material-ui/core/FormHelperText';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
+import ProfileTechChip from '../ProfileTechChip/ProfileTechChip';
 import './ProfileEdit.css';
 
 const useStyles = makeStyles((theme) => ({
@@ -33,14 +34,17 @@ export default function ProfileForm(props) {
   const classes = useStyles();
   const dispatch = useDispatch();
 
+  
+
   const user = useSelector((store) => store.user);
 
-  const[tech, setTech] = useState([]);
+  // const[tech, setTech] = useState([]);
   const [image, setImage] = useState('');
   const [name, setName] = useState('');
   const [dev, setDev] = useState('');
   const [github, setGithub] = useState('');
   const [bio, setBio] = useState('');
+  const [personName, setPersonName] = React.useState([]);
 
   const [chipData, setChipData] = useState([
     { key: 0, label: 'Angular' },
@@ -71,37 +75,80 @@ export default function ProfileForm(props) {
     
   };
 
+
+
   const registerUserInfo = (event) => {
     event.preventDefault();
+    console.log('This is user before changes:', user);
+    let newTechOne = personName[0];
+    let newTechTwo = personName[1];
+    let newTechThree = personName[2];
+    let newName = name;
+    let newDev = dev;
+    let newImage = image;
+    let newBio = bio;
+    let newGithub = github;
 
-    dispatch({
-      type: 'UPDATE_PROFILE',
-      payload: {
-        id: user.id,
-        username: user.username,
-        name: name,
-        dev_type: dev,
-        tech_one: tech[0],
-        tech_two: tech[1],
-        tech_three: tech[2],
-        profile_image: image,
-        bio: bio,
-        github: github,
-        active: true,
-      },
-    });
+  
+
+    if(name == ''){
+      newName = user.name;
+    }
+    if(dev == '') {
+      newDev = user.dev_type;
+    }
+    if(image == '') {
+      newImage = user.profile_image;
+    }
+    if(bio == ''){
+      newBio = user.bio;
+    }
+    if(github == '') {
+      newGithub = user.github;
+    }
+      
+        if(personName.length === 0) {
+        console.log('In person Name if');
+        newTechOne = user.tech_one;
+        newTechTwo = user.tech_two ;
+        newTechThree = user.tech_three;
+      } 
+
+    
 
     // dispatch({
-    //   type: 'UPDATE_TECH',
+    //   type: 'UPDATE_PROFILE',
     //   payload: {
-    //     user_id: user.id,
+    //     id: user.id,
+    //     username: user.username,
+    //     name: name,
+    //     dev_type: dev,
     //     tech_one: tech[0],
     //     tech_two: tech[1],
     //     tech_three: tech[2],
+    //     profile_image: image,
+    //     bio: bio,
+    //     github: github,
+    //     active: true,
     //   },
     // });
+    
 
-  }; // end registerUser
+      console.log('This is Object to send after changes:', {
+        id: user.id,
+        username: user.username,
+        name: newName,
+        dev_type: newDev,
+        tech_one: newTechOne,
+        tech_two: newTechTwo,
+        tech_three: newTechThree,
+        profile_image: newImage,
+        bio: newBio,
+        github: newGithub,
+        active: true,
+      });
+
+  }; 
 
   
 
@@ -111,7 +158,7 @@ export default function ProfileForm(props) {
       <form className={classes.root} noValidate autoComplete="off">
         
         <div className="formContainer">
-          
+          <button className="saveBtn" onClick={registerUserInfo}>Save Changes</button>
           <ProfileEditImage image={image} setImage={setImage}/>
           
           <TextField
@@ -160,9 +207,10 @@ export default function ProfileForm(props) {
             defaultValue={user.bio}
             variant="outlined"
           />
-          <ProfileTech tech={tech} setTech={setTech} />
+          {/* <ProfileTech tech={tech} setTech={setTech} /> */}
+          <ProfileTechChip personName={personName} setPersonName={setPersonName}/>
         </div>
-        <button onClick={registerUserInfo} >submit</button>
+        {/* <button onClick={registerUserInfo} >submit</button> */}
       </form>
     </div>
   );
