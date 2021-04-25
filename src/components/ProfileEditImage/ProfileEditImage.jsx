@@ -1,4 +1,4 @@
-import {useState} from 'react';
+import {useState, useEffect} from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { makeStyles } from '@material-ui/core/styles';
 import Avatar from '@material-ui/core/Avatar';
@@ -24,19 +24,33 @@ const useStyles = makeStyles((theme) => ({
 
 export default function ProfileImage(props) {
   const classes = useStyles();
-
+  const dispatch = useDispatch();
   const user = useSelector((store) => store.user);
+
+  const [display, setDisplay] = useState(true);
+
+  
+
+  useEffect(() => {
+    props.setImage(user.profile_image)
+  }, []);
+
+  
   
 
   const handleChange = (event) => {
     props.setImage(event.target.value);
+   
+    console.log('changed');
+    
+  
     
   };
 
   return (
     <div className={classes.root}>
       <div>
-        <Avatar className={classes.img} alt="profile Image" src={user.profile_image} />
+        <Avatar className={classes.img} alt="profile Image" src={props.image} />
 
       </div>
       <div className={classes.img}>

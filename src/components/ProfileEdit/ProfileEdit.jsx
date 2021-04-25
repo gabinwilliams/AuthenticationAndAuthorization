@@ -39,12 +39,12 @@ export default function ProfileForm(props) {
   const user = useSelector((store) => store.user);
 
   // const[tech, setTech] = useState([]);
-  const [image, setImage] = useState('');
+  const [image, setImage] = React.useState('');
   const [name, setName] = useState('');
   const [dev, setDev] = useState('');
   const [github, setGithub] = useState('');
   const [bio, setBio] = useState('');
-  const [personName, setPersonName] = React.useState([]);
+  const [tech, setTech] = React.useState([]);
 
   const [chipData, setChipData] = useState([
     { key: 0, label: 'Angular' },
@@ -80,9 +80,9 @@ export default function ProfileForm(props) {
   const registerUserInfo = (event) => {
     event.preventDefault();
     console.log('This is user before changes:', user);
-    let newTechOne = personName[0];
-    let newTechTwo = personName[1];
-    let newTechThree = personName[2];
+    let newTechOne = tech[0];
+    let newTechTwo = tech[1];
+    let newTechThree = tech[2];
     let newName = name;
     let newDev = dev;
     let newImage = image;
@@ -107,7 +107,7 @@ export default function ProfileForm(props) {
       newGithub = user.github;
     }
       
-        if(personName.length === 0) {
+        if(tech.length === 0) {
         console.log('In person Name if');
         newTechOne = user.tech_one;
         newTechTwo = user.tech_two ;
@@ -208,7 +208,7 @@ export default function ProfileForm(props) {
             variant="outlined"
           />
           {/* <ProfileTech tech={tech} setTech={setTech} /> */}
-          <ProfileTechChip personName={personName} setPersonName={setPersonName}/>
+          <ProfileTechChip tech={tech} setTech={setTech}/>
         </div>
         {/* <button onClick={registerUserInfo} >submit</button> */}
       </form>
