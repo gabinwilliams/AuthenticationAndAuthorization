@@ -1,5 +1,5 @@
 
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Avatar from '@material-ui/core/Avatar';
 import Chip from '@material-ui/core/Chip';
@@ -21,7 +21,9 @@ const useStyles = makeStyles((theme) => ({
 export default function Chips(props) {
   const classes = useStyles();
  
-
+  useEffect(() => {
+    
+  }, [useState]);
 
   const [chipData, setChipData] = useState([
     { key: 0, label: 'Angular' },
@@ -38,9 +40,10 @@ export default function Chips(props) {
   const handleClick = (data) => {
     // event.preventDefault()
     console.info('You clicked the Chip:', data);
-    if(props.tech.length < 3) {
-      props.setTech([...props.tech, data])
-    }
+    // if(props.tech.length < 3) {
+      // props.setTech([...props.tech, data])
+      props.setTech(data)
+    // }
     console.log('this is tech array:', props.tech);
   };
 

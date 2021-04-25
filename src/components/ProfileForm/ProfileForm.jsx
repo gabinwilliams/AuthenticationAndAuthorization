@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import ProfileImage from '../ProfileImage/ProfileImage';
 import ProfileTech from '../ProfileTech/ProfileTech';
@@ -31,6 +31,8 @@ export default function ProfileForm(props) {
   const dispatch = useDispatch();
 
   const user = useSelector((store) => store.user);
+
+ 
 
   const[tech, setTech] = useState([]);
   const [image, setImage] = useState('');

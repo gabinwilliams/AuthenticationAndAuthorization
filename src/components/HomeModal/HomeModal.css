@@ -26,11 +26,13 @@ p {
 }
 .bioContainer {
   display: flex;
-  width: 75vw;
+  width: 60vw;
   height: 30vh;
   border-radius: 5px;
   padding: 5px;
-  background-color: rgba(170, 175, 173, .2);
+  margin-top: 20px;
+  background-color: rgba(170, 175, 173, .1);
+  box-shadow: 0px 18px 20px 0px rgba(0, 0, 0, 0.3);
 }
 
 .githubContainer {
@@ -52,12 +54,13 @@ p {
 
 
 .imageContainer {
+  background-size: cover;
+  background-position: center;
+  border-radius: 10px;
   margin-bottom: 10px;
   width: 150px;
-  height: 100px;
+  height: 150px;
   box-shadow: 0px 18px 20px 0px rgba(0, 0, 0, 0.3);
   
 }
-img {
-  border-radius: 10px;
-}
+

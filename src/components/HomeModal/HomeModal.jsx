@@ -98,8 +98,10 @@ export default function HomeModal(props) {
       >
         <Fade in={open}>
           <div className={classes.paper}>
-            <div className="imageContainer">
-              <img src={props.person.profile_image} alt="Profile Photo"/>
+            <div className="imageContainer"
+              style={{backgroundImage: `url(${props.person.profile_image})`}}
+            >
+              {/* <img src={props.person.profile_image} alt="Profile Photo"/> */}
             </div>
             <div className="modalTech">
               <p className="modalTechChip">{props.person.tech_one}</p>
