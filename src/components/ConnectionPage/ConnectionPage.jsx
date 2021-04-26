@@ -1,29 +1,102 @@
-import React from 'react'
+import React, {useState, useEffect} from "react";
+
+import { useDispatch, useSelector } from "react-redux";
+import Avatar from '@material-ui/core/Avatar';
 import ProfileEditHeader from '../ProfileEditHeader/ProfileEditHeader';
 import './ConnectionPage.css';
 
+
+
+
 const ConnectionPage = () => {
+  const dispatch = useDispatch();
+  const user = useSelector((store) => store.user);
+  const fetchUserLikes = useSelector((store) => store.fetchUserLikes);
+  const userProfiles = useSelector((store) => store.userProfiles);
+
+
+  useEffect(() => {
+    dispatch({ type: "FETCH_CARDS" });
+    dispatch({ type: 'FETCH_LIKES'});
+
+  }, [dispatch] );
+
+  
+
+
+  const filterArray = () => {
+    let newNewArray = userProfiles.filter(data => data.id != user.id);
+    let likedArray = fetchUserLikes.filter(data => data.liked_user_id == user.id && data.liked == true);
+    // let newArray = userProfiles.filter(data => data.id != user.id);
+
+    let finalArray = [];
+      
+      
+      console.log('filtered array for likes', likedArray);
+
+
+      // if(fetchUserLikes.length != 0) {
+      //   for(let i = 0; i < newArray.length; i++) {
+      //     for(let z = 0; z < likedArray.length; z++) {
+      //         if(newArray[i].id === likedArray[z].liked_user_id){
+      //         console.log('This will be pushed to FinalArray:', likedArray[z].liked_user_id);
+              
+      //           console.log(newArray.indexOf(newArray[i]));
+      //           let indexToRemove = newArray.indexOf(newArray[i]);
+      //           // newNewArray.splice(indexToRemove, 100)
+      //             finalArray.push(likedArray[z]);
+      //             console.log('final array after push', finalArray);
+      //            }    
+               
+            
+      //     }// end for z
+          
+      //     // console.log('newNewArray filtered', newNewArray);
+      //   }
+
+      //   console.log('This is final filtered Array:', finalArray);
+        
+      //   return newNewArray;
+  // }
+      return likedArray;
+
+    }
+    let arrayToMap = filterArray();
+
+
 
 
   return (
+
     <div>
       <ProfileEditHeader />
-      <div className="connectionContainer">
-        <div className="connectionTile">
-            <p>My Name</p>
-            <img src="" alt="Profile"/>
-            <p>Tech1</p>
-            <p>Tech2</p>
-            <p>Tech3</p>
-        </div>
 
-        <div className="buttonsContainer">
-            <button>Accept</button>
-            <button>Decline</button>
-        </div>
+      {arrayToMap.map(person => (
 
+      <div key={person.user_id}>
+        <div className="connectionContainer">
+          <div className="connectionTile">
+            <div className="profileImageContainer"
+                style={{backgroundImage: `url(${person.profile_image})`}}
+              >
+                
+            </div>
+              <p className="profileName" >{person.name}</p>
+            <div>
+              <p className="tech">{person.tech_one}</p>
+              <p className="tech">{person.tech_two}</p>
+              <p className="tech">{person.tech_three}</p>
+            </div>
+            </div>
+
+          <div className="buttonsContainer">
+              <button>Accept</button>
+              <button>Decline</button>
+          </div>
+
+        </div>
       </div>
-
+    ))}
     </div>
   )
 }
