@@ -1,6 +1,7 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import clsx from 'clsx';
+import './ProfileTechChip.css';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
 import Input from '@material-ui/core/Input';
 import InputLabel from '@material-ui/core/InputLabel';
@@ -67,6 +68,8 @@ export default function MultipleSelect(props) {
   const user = useSelector((store) => store.user);
 
   
+
+  
   const handleChange = (event) => {
     console.log(props.personName);
     props.setTech(event.target.value);
@@ -76,16 +79,7 @@ export default function MultipleSelect(props) {
     
   };
 
-  // const handleChangeMultiple = (event) => {
-  //   const { options } = event.target;
-  //   const value = [];
-  //   for (let i = 0, l = options.length; i < l; i += 1) {
-  //     if (options[i].selected) {
-  //       value.push(options[i].value);
-  //     }
-  //   }
-  //   setPersonName(value);
-  // };
+  
   
   return (
     <div>
@@ -117,10 +111,13 @@ export default function MultipleSelect(props) {
           ))}
         </Select>
       </FormControl>
-
-      <p>{user.tech_one}</p>
-      <p>{user.tech_two}</p>
-      <p>{props.tech[0]}</p>
+        <p className="techTitle">Current Top 3 Tech</p>
+        <hr/>
+      <div className="currentTech">
+        <p className="techP">{user.tech_one}</p>
+        <p className="techP">{user.tech_two}</p>
+        <p className="techP">{user.tech_three}</p>
+      </div>
       
     </div>
   );
