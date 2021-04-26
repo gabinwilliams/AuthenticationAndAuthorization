@@ -9,14 +9,19 @@ import IconButton from "@material-ui/core/IconButton";
 const HomeHeader = () => {
   const history = useHistory();
 
-  const handleClick = () => {
+  const handleClickProfile = () => {
 
     history.push('/profileEdit');
   }
 
+  const handleClickConnection = () => {
+
+    history.push('/connection');
+  }
+
   return (
     <div className="header">
-      <IconButton onClick={handleClick}>
+      <IconButton onClick={handleClickProfile}>
         <PersonIcon className="headerIcon" fontSize="large" />
       </IconButton>
 
@@ -24,7 +29,7 @@ const HomeHeader = () => {
 
       {/* <LogOutButton /> */}
 
-      <IconButton>
+      <IconButton onClick={handleClickConnection}>
         <ForumIcon className="headerIcon" fontSize="large" />
       </IconButton>
     </div>
