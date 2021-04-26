@@ -3,6 +3,7 @@ import React, {useState, useEffect} from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Avatar from '@material-ui/core/Avatar';
 import ProfileEditHeader from '../ProfileEditHeader/ProfileEditHeader';
+import HomeModal from '../HomeModal/HomeModal';
 import './ConnectionPage.css';
 
 
@@ -13,6 +14,7 @@ const ConnectionPage = () => {
   const user = useSelector((store) => store.user);
   const fetchUserLikes = useSelector((store) => store.fetchUserLikes);
   const userProfiles = useSelector((store) => store.userProfiles);
+  const [open, setOpen] = useState(false);
 
 
   useEffect(() => {
@@ -72,14 +74,17 @@ const ConnectionPage = () => {
       <ProfileEditHeader />
 
       {arrayToMap.map(person => (
-
+        
       <div key={person.user_id}>
+        
         <div className="connectionContainer">
+        
           <div className="connectionTile">
-            <div className="profileImageContainer"
-                style={{backgroundImage: `url(${person.profile_image})`}}
-              >
-                
+            <div className="imageBtn">
+              <HomeModal open={open} setOpen={setOpen} person={person}/>
+              <div className="profileImageContainer"
+                  style={{backgroundImage: `url(${person.profile_image})`}}>
+              </div>
             </div>
               <p className="profileName" >{person.name}</p>
             <div>
