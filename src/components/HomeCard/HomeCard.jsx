@@ -77,51 +77,47 @@ const HomeCard = () => {
       
   }
   const filterArray = () => {
-    
-    let likedArray = fetchUserLikes.filter(data => data.user_id == user.id && data.liked == true);
+    let newNewArray = userProfiles.filter(data => data.id != user.id);
+    let likedArray = fetchUserLikes.filter(data => data.username == user.username && data.liked == true);
     let newArray = userProfiles.filter(data => data.id != user.id);
 
-  //   let finalArray = newArray;
-    
+    let finalArray = [];
+      
+      
+      
 
-  //   if(fetchUserLikes.length != 0) {
 
-  //     for(let i = 0; i < newArray.length; i++) {
-  //       for(let z = 0; z < likedArray.length; z++) {
-  //           if(likedArray[z].liked === true) {
-  //               let idToRemove = likedArray[z].liked_user_id;
-  //               // console.log(idToRemove);
-  //               // newArray.filter(data => data.id != idToRemove)
-  //               //  finalArray.splice(finalArray[i]-1, 1);
-                  
+      if(fetchUserLikes.length != 0) {
+        for(let i = 0; i < newArray.length; i++) {
+          for(let z = 0; z < likedArray.length; z++) {
+              if(newArray[i].id === likedArray[z].liked_user_id){
+              console.log('This will be pushed to FinalArray:', likedArray[z].liked_user_id);
+              
+                console.log(newArray.indexOf(newArray[i]));
+                let indexToRemove = newArray.indexOf(newArray[i]);
+                newNewArray.splice(indexToRemove, 100)
+                 }    
+               
+            
+          }// end for z
+          
+          // console.log('newNewArray filtered', newNewArray);
+        }
 
-  //                 console.log('Array after splice:', newArray);
-                
-                
-                
-  //           }
-  //       }// end for z
-  //   }// end for i
-  //   console.log('new array to return', newArray);
-  //   return newArray;
-  // }// end if to run logic
+        console.log('This is final filtered Array:', newNewArray);
+        
+        return newNewArray;
+      }
+
+ 
   console.log('returned the normal array because not likes yet', newArray);
   return newArray;
   }
-  // console.log('This is new filtered array: ', filterArray());
+
 
   let profileArray = filterArray();
   
-  
-  // const removeLoggedUserFromArray = () => {
-    
-  //   let newArray = userProfiles.filter(data => data.id != user.id);
-  //   // console.log('This is new likedArray', likedArray);
 
-
-  //   return newArray;
-  // }
-  // let profileArray = removeLoggedUserFromArray();
 
   
  
