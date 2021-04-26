@@ -1,0 +1,21 @@
+
+.connectionContainer {
+  display: flex;
+  justify-content: space-around;
+
+
+}
+
+.connectionTile{
+  display: flex;
+  width: 75vw;
+  height: 15vh;
+  background-color: gray;
+ 
+}
+
+.buttonsContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}

@@ -21,6 +21,7 @@ import LoginPage from '../LoginPage/LoginPage';
 import RegisterPage from '../RegisterPage/RegisterPage';
 import Home from '../Home/Home';
 import ProfileEdit from '../ProfileEdit/ProfileEdit';
+import ConnectionPage from '../ConnectionPage/ConnectionPage';
 
 import './App.css';
 
@@ -36,7 +37,7 @@ function App() {
   return (
     <Router>
       <div>
-        {/* <Nav /> */}
+        <Nav />
         <Switch>
           {/* Visiting localhost:3000 will redirect to localhost:3000/home */}
           <Redirect exact from="/" to="/home" />
@@ -95,7 +96,7 @@ function App() {
             // - else shows LoginPage at /login
             exact
             path="/login"
-            authRedirect="/user"
+            authRedirect="/mainView"
           >
             <LoginPage />
           </ProtectedRoute>
@@ -106,7 +107,7 @@ function App() {
             // - else shows RegisterPage at "/registration"
             exact
             path="/registration"
-            authRedirect="/user"
+            authRedirect="/mainView"
           >
             <RegisterPage />
           </ProtectedRoute>
@@ -117,9 +118,20 @@ function App() {
             // - else shows LandingPage at "/home"
             exact
             path="/home"
-            authRedirect="/user"
+            authRedirect="/mainView"
           >
             <LandingPage />
+          </ProtectedRoute>
+
+          <ProtectedRoute
+            // with authRedirect:
+            // - if logged in, redirects to "/user"
+            // - else shows LandingPage at "/home"
+            exact
+            path="/connection"
+            // authRedirect="/user"
+          >
+            <ConnectionPage />
           </ProtectedRoute>
 
           {/* If none of the other routes matched, we will show a 404. */}
