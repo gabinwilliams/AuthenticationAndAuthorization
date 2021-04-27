@@ -15,7 +15,7 @@ const HomeCard = () => {
   const user = useSelector((store) => store.user);
   const fetchUserLikes = useSelector((store) => store.fetchUserLikes);
   const userProfiles = useSelector((store) => store.userProfiles);
-  const [open, setOpen] = useState(false);
+ 
   
   
  
@@ -101,7 +101,7 @@ const HomeCard = () => {
             
           }// end for z
           
-          // console.log('newNewArray filtered', newNewArray);
+          
         }
 
         console.log('This is final filtered Array:', newNewArray);
@@ -152,14 +152,18 @@ const HomeCard = () => {
               
             style={{backgroundImage: `url(${person.profile_image})`}}
             >
-              <HomeModal open={open} setOpen={setOpen} person={person}/>
+              <HomeModal  person={person}/>
               <h3 className="name">{person.name}</h3>
               <div className="techContainer">
                 <h4 className="techChip">{person.tech_one}</h4>
                 <h4 className="techChip">{person.tech_two}</h4>
                 <h4 className="techChip">{person.tech_three}</h4>
+                
               </div>
+              
             </div>
+        
+
           </TinderCard> 
         ))}
         

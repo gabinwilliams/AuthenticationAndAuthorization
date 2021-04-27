@@ -1,7 +1,10 @@
 import React, {useState, useEffect} from "react";
-
+import { useHistory } from 'react-router-dom';
 import { useDispatch, useSelector } from "react-redux";
 import Avatar from '@material-ui/core/Avatar';
+import SimpleDateTime  from 'react-simple-timestamp-to-date';
+import ChatBubbleIcon from '@material-ui/icons/ChatBubble';
+import IconButton from "@material-ui/core/IconButton";
 import ProfileEditHeader from '../ProfileEditHeader/ProfileEditHeader';
 import HomeModal from '../HomeModal/HomeModal';
 import './ConnectionPage.css';
@@ -11,6 +14,7 @@ import './ConnectionPage.css';
 
 const ConnectionPage = () => {
   const dispatch = useDispatch();
+  const history = useHistory();
   const user = useSelector((store) => store.user);
   const fetchUserLikes = useSelector((store) => store.fetchUserLikes);
   const userProfiles = useSelector((store) => store.userProfiles);
@@ -24,10 +28,10 @@ const ConnectionPage = () => {
   }, [dispatch] );
 
   
-
+  let conditional = true;
 
   const filterArray = () => {
-    let newNewArray = userProfiles.filter(data => data.id != user.id);
+    // let newNewArray = userProfiles.filter(data => data.id != user.id);
     let likedArray = fetchUserLikes.filter(data => data.liked_user_id == user.id && data.liked == true);
     // let newArray = userProfiles.filter(data => data.id != user.id);
 
@@ -36,35 +40,30 @@ const ConnectionPage = () => {
       
       console.log('filtered array for likes', likedArray);
 
-
-      // if(fetchUserLikes.length != 0) {
-      //   for(let i = 0; i < newArray.length; i++) {
-      //     for(let z = 0; z < likedArray.length; z++) {
-      //         if(newArray[i].id === likedArray[z].liked_user_id){
-      //         console.log('This will be pushed to FinalArray:', likedArray[z].liked_user_id);
-              
-      //           console.log(newArray.indexOf(newArray[i]));
-      //           let indexToRemove = newArray.indexOf(newArray[i]);
-      //           // newNewArray.splice(indexToRemove, 100)
-      //             finalArray.push(likedArray[z]);
-      //             console.log('final array after push', finalArray);
-      //            }    
-               
-            
-      //     }// end for z
-          
-      //     // console.log('newNewArray filtered', newNewArray);
-      //   }
-
-      //   console.log('This is final filtered Array:', finalArray);
-        
-      //   return newNewArray;
-  // }
       return likedArray;
 
     }
     let arrayToMap = filterArray();
 
+
+    const updateMatch = (person) => {
+        // console.log('Conditional render', match);
+        console.log(person.user_id, person.liked_user_id);
+        dispatch({
+          type: 'UPDATE_MATCH',
+          payload: {
+            user_id: person.user_id,
+            liked_user_id: person.liked_user_id,
+            match: true,
+
+          },
+        });
+
+    }
+
+    const handleChat = () => {
+      history.push('/messages');
+    }
 
 
 
@@ -98,8 +97,24 @@ const ConnectionPage = () => {
             </div>
 
           <div className="buttonsContainer">
-              <button>Accept</button>
+          { //Check if message failed
+        (person.match === false)
+          ? <div>
+              <button onClick={() => updateMatch(person)}>Accept</button>
               <button>Decline</button>
+            </div>
+          
+          : <div> 
+              <IconButton onClick={handleChat}>
+                <ChatBubbleIcon fontSize="large"></ChatBubbleIcon>
+              </IconButton>
+              <SimpleDateTime dateSeparator="-" format="MYD" showTime="0">{1588111492}</SimpleDateTime>
+            </div> 
+      }
+              
+              
+              
+            
           </div>
 
         </div>

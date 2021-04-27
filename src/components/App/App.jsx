@@ -22,6 +22,7 @@ import RegisterPage from '../RegisterPage/RegisterPage';
 import Home from '../Home/Home';
 import ProfileEdit from '../ProfileEdit/ProfileEdit';
 import ConnectionPage from '../ConnectionPage/ConnectionPage';
+import Messages from '../Messages/Messages';
 
 import './App.css';
 
@@ -110,6 +111,17 @@ function App() {
             authRedirect="/mainView"
           >
             <RegisterPage />
+          </ProtectedRoute>
+
+          <ProtectedRoute
+            // with authRedirect:
+            // - if logged in, redirects to "/user"
+            // - else shows RegisterPage at "/registration"
+            exact
+            path="/messages"
+            // authRedirect="/login"
+          >
+            <Messages />
           </ProtectedRoute>
 
           <ProtectedRoute
