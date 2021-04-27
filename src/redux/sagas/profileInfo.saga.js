@@ -61,11 +61,31 @@ function* updateLikedId(action) {
 }
 
 
+function* updateMatch(action) {
+  
+  try {
+    
+    // yield put({ type: 'UPDATE_LIKED_USER_ID', payload: action.payload });
+
+    yield axios.put('/api/profile/match', action.payload);
+
+    yield put({type: 'FETCH_LIKES'});
+  } catch (error) {
+    console.log('Error with PUT updating match', error);
+    yield put({ type: 'REGISTRATION_FAILED' });
+  }
+ 
+}
+
+
+
+
 
 function* profileInfoSaga() {
   yield takeLatest('UPDATE_PROFILE', registerUserInfo);
   yield takeLatest('UPDATE_LIKES', updateUserLikes);
   yield takeLatest('UPDATE_LIKED_ID', updateLikedId);
+  yield takeLatest('UPDATE_MATCH', updateMatch);
   
   
 }
