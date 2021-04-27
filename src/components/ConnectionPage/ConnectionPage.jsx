@@ -86,11 +86,14 @@ const ConnectionPage = () => {
                   style={{backgroundImage: `url(${person.profile_image})`}}>
               </div>
             </div>
-              <p className="profileName" >{person.name}</p>
+              
             <div>
-              <p className="tech">{person.tech_one}</p>
-              <p className="tech">{person.tech_two}</p>
-              <p className="tech">{person.tech_three}</p>
+              <p className="profileName" >{person.name}</p>
+              <div className="techContainer">
+                <p className="tech">{person.tech_one}</p>
+                <p className="tech">{person.tech_two}</p>
+                <p className="tech">{person.tech_three}</p>
+              </div>
             </div>
             </div>
 
