@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from "react";
-
+import { useHistory } from 'react-router-dom';
 import { useDispatch, useSelector } from "react-redux";
 import Avatar from '@material-ui/core/Avatar';
 import SimpleDateTime  from 'react-simple-timestamp-to-date';
@@ -14,6 +14,7 @@ import './ConnectionPage.css';
 
 const ConnectionPage = () => {
   const dispatch = useDispatch();
+  const history = useHistory();
   const user = useSelector((store) => store.user);
   const fetchUserLikes = useSelector((store) => store.fetchUserLikes);
   const userProfiles = useSelector((store) => store.userProfiles);
@@ -60,6 +61,10 @@ const ConnectionPage = () => {
 
     }
 
+    const handleChat = () => {
+      history.push('/messages');
+    }
+
 
 
   return (
@@ -100,7 +105,7 @@ const ConnectionPage = () => {
             </div>
           
           : <div> 
-              <IconButton>
+              <IconButton onClick={handleChat}>
                 <ChatBubbleIcon fontSize="large"></ChatBubbleIcon>
               </IconButton>
               <SimpleDateTime dateSeparator="-" format="MYD" showTime="0">{1588111492}</SimpleDateTime>
