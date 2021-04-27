@@ -67,6 +67,7 @@ export default function HomeModal(props) {
 
 
   const handleOpen = () => {
+    
     setOpen(true);
   };
 
@@ -81,9 +82,7 @@ export default function HomeModal(props) {
 
         </ExpandMoreIcon>
       </IconButton>
-      {/* <button className="modalBtn" type="button" onClick={handleOpen}>
-        react-spring
-      </button> */}
+     
       <Modal
         aria-labelledby="spring-modal-title"
         aria-describedby="spring-modal-description"

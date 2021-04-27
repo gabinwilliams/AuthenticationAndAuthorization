@@ -48,8 +48,25 @@ router.get('/likes', (req, res) => {
 /**
  * POST route template
  */
-router.post('/', (req, res) => {
+router.put('/match', (req, res) => {
   // POST route code here
+  // const queryText = `UPDATE "user" 
+  // SET "name" = $1, dev_type = $2, profile_image = $3, bio = $4, github = $5, tech_one = $6, tech_two = $7, tech_three = $8, active = $9
+  // WHERE "user".id = ${req.body.id}
+
+  console.log('In POST /match', req.body);
+  const queryText = `UPDATE "user_likes" 
+    SET "match" = $1
+    WHERE "user_id" = ${req.body.user_id} AND "liked_user_id" = ${req.body.liked_user_id}
+    ;`;
+  pool
+    .query(queryText, [req.body.match])
+    .then(() => res.sendStatus(201))
+    .catch((err) => {
+      console.log('error in PUT /match ', err);
+      res.sendStatus(500);
+    });
 });
+
 
 module.exports = router;
