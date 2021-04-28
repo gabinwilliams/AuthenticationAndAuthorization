@@ -99,16 +99,16 @@ const ConnectionPage = () => {
           <div className="buttonsContainer">
           { //Check if message failed
         (person.match === false)
-          ? <div>
+          ? <div className="buttonWrapper" onClick={''}>
               <button onClick={() => updateMatch(person)}>Accept</button>
               <button>Decline</button>
             </div>
           
           : <div> 
               <IconButton onClick={handleChat}>
-                <ChatBubbleIcon fontSize="large"></ChatBubbleIcon>
+                <ChatBubbleIcon className="chatBubble" fontSize="large"></ChatBubbleIcon>
               </IconButton>
-              <SimpleDateTime dateSeparator="-" format="MYD" showTime="0">{1588111492}</SimpleDateTime>
+              {/* <SimpleDateTime dateSeparator="-" format="MYD" showTime="0">{1588111492}</SimpleDateTime> */}
             </div> 
       }
               
