@@ -1,6 +1,8 @@
 import React from 'react'
 import './Messages.css';
 import MessagesHeader from '../MessagesHeader/MessagesHeader';
+import MessagesInput from '../MessagesInput/MessagesInput';
+
 const Messages = () => {
   return (
     <div>
@@ -22,7 +24,9 @@ const Messages = () => {
               </div>
           </div>
         </div>
+        
       </div>
+      <MessagesInput />
     </div>
   )
 }
