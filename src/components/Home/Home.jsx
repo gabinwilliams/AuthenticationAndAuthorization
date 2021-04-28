@@ -5,11 +5,11 @@ import HomeCard from "../HomeCard/HomeCard";
 
 const Home = () => {
   return (
-    <div className="homeContainer">
+    <>
       <HomeHeader />
       <HomeCard />
       {/* Buttons below tinder card */}
-    </div>
+    </>
   );
 };
 

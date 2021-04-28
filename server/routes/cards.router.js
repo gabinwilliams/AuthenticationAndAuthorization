@@ -69,4 +69,22 @@ router.put('/match', (req, res) => {
 });
 
 
+router.delete('/connection/request/:id', (req, res) => {
+ 
+
+  console.log('In DELETE /connection/request', req.params);
+  const queryText = `
+  DELETE FROM "user_likes" 
+  WHERE "user_likes".user_id = ${req.params.id}
+  `;
+  pool
+    .query(queryText)
+    .then(() => res.sendStatus(201))
+    .catch((err) => {
+      console.log('error in DELETE /connection/request ', err);
+      res.sendStatus(500);
+    });
+});
+
+
 module.exports = router;
