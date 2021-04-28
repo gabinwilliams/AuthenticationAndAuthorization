@@ -1,4 +1,5 @@
 import React, {useState, useEffect} from "react";
+import axios from 'axios';
 import { useHistory } from 'react-router-dom';
 import { useDispatch, useSelector } from "react-redux";
 import Avatar from '@material-ui/core/Avatar';
@@ -65,6 +66,27 @@ const ConnectionPage = () => {
       history.push('/messages');
     }
 
+    const deleteConnection = (person) => {
+      console.log('delete clicked', person);
+
+      let obj = {
+        user_id: person,
+        
+      }
+      axios
+    .delete(`/api/profile/connection/request/${person}`)
+    .then((response) => {
+      console.log('DELETE from connectionPage:', response);
+      dispatch({type: 'FETCH_LIKES'})
+    })
+    .catch((err) => {
+      console.log("Error in DELETE", err);
+    });
+
+
+      
+    }
+
 
 
   return (
@@ -99,7 +121,7 @@ const ConnectionPage = () => {
           <div className="buttonsContainer">
           { //Check if message failed
         (person.match === false)
-          ? <div className="buttonWrapper" onClick={''}>
+          ? <div className="buttonWrapper" onClick={() => deleteConnection(person.user_id)}>
               <button onClick={() => updateMatch(person)}>Accept</button>
               <button>Decline</button>
             </div>
