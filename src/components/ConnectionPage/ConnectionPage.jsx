@@ -62,7 +62,20 @@ const ConnectionPage = () => {
 
     }
 
-    const handleChat = () => {
+    const handleChat = (person) => {
+      console.log('This is the id to send', person);
+
+      let obj = {
+        user_id: person.user_id,
+        name: person.name,
+        profile_image: person.profile_image,
+        match: person.match,
+
+      }
+      console.log('This is obj to send:', obj);
+
+      dispatch({type: 'CHAT_ID', payload: obj});
+
       history.push('/messages');
     }
 
@@ -127,10 +140,10 @@ const ConnectionPage = () => {
             </div>
           
           : <div> 
-              <IconButton onClick={handleChat}>
+              <IconButton onClick={() => handleChat(person)}>
                 <ChatBubbleIcon className="chatBubble" fontSize="large"></ChatBubbleIcon>
               </IconButton>
-              {/* <SimpleDateTime dateSeparator="-" format="MYD" showTime="0">{1588111492}</SimpleDateTime> */}
+              
             </div> 
       }
               

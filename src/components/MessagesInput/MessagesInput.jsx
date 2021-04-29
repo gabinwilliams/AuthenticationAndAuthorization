@@ -1,8 +1,10 @@
-import React from 'react';
+import React, {useState} from 'react';
+import { useDispatch, useSelector } from "react-redux";
 import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import SendIcon from '@material-ui/icons/Send';
 import IconButton from '@material-ui/core/IconButton';
+
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -27,8 +29,22 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-export default function LayoutTextFields() {
+export default function LayoutTextFields(props) {
   const classes = useStyles();
+
+  const chatPerson = useSelector((store) => store.chat);
+
+
+  const handleChat = (event) => {
+    props.setChat(event.target.value);
+
+    
+  }
+
+  const handleSend = () => {
+    console.log('This is the chatPerson:', chatPerson);
+  }
+
 
   return (
     <div className={classes.root}>
@@ -46,8 +62,9 @@ export default function LayoutTextFields() {
             // helperText="Some important text"
             margin="normal"
             variant="outlined"
+            onChange={handleChat}
           />
-          <IconButton>
+          <IconButton onClick={handleSend}>
             <SendIcon color='primary' fontSize="large"></SendIcon>
           </IconButton>
         </div>
