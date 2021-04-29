@@ -33,14 +33,17 @@ const useStyles = makeStyles((theme) => ({
 export default function LayoutTextFields(props) {
   const classes = useStyles();
 
+  const dispatch = useDispatch();
+
   const chatPerson = useSelector((store) => store.chat);
   const user = useSelector((store) => store.user);
 
-  // useEffect(() => {
-  //   dispatch({ type: "FETCH_CARDS" });
-  //   dispatch({ type: 'FETCH_LIKES'});
+  useEffect(() => {
+    dispatch({ type: "FETCH_MESSAGES" });
+    // dispatch({ type: 'FETCH_LIKES'});
 
-  // }, [dispatch] );
+
+  }, [dispatch] );
 
 
   const handleChat = (event) => {
@@ -75,7 +78,7 @@ export default function LayoutTextFields(props) {
       .post("/api/user/current/chat", obj)
       .then((response) => {
         props.setChat('');
-        
+        dispatch({ type: "FETCH_MESSAGES" });
       })
       .catch((err) => {
         console.log("Error in POST /current/chat", err);

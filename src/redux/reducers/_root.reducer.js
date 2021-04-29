@@ -5,6 +5,7 @@ import userProfiles from './userProfiles.reducer';
 import userLikes from './userLikes.reducer';
 import fetchUserLikes from './fetchUserLikes.reducer';
 import chat from './chat.reducer';
+import messages from './messages.reducer';
 
 // rootReducer is the primary reducer for our entire project
 // It bundles up all of the other reducers so our project can use them.
@@ -19,6 +20,7 @@ const rootReducer = combineReducers({
   userLikes,
   fetchUserLikes,
   chat,
+  messages,
 });
 
 export default rootReducer;
