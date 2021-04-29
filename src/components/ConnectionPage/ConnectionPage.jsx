@@ -134,9 +134,9 @@ const ConnectionPage = () => {
           <div className="buttonsContainer">
           { //Check if message failed
         (person.match === false)
-          ? <div className="buttonWrapper" onClick={() => deleteConnection(person.user_id)}>
+          ? <div className="buttonWrapper" >
               <button onClick={() => updateMatch(person)}>Accept</button>
-              <button>Decline</button>
+              <button onClick={() => deleteConnection(person.user_id)}>Decline</button>
             </div>
           
           : <div> 
