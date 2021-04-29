@@ -12,8 +12,15 @@ const userStrategy = require('../strategies/user.strategy');
  */
  router.get('/messages', (req, res) => {
 
+  
   const query = `SELECT * FROM "messages";`
 
+  // try{
+  //     const response = await pool.query(query);
+  //     res.send(response.rows)
+  // }catch(error){
+  //     console.log('Error in GET /messages', error);
+  // }
   pool.query(query)
     .then( result => {
      
