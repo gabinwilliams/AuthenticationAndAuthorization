@@ -42,15 +42,18 @@ export default function LayoutTextFields(props) {
   useEffect(() => {
     dispatch({ type: "FETCH_MESSAGES" });
     dispatch({ type: 'FETCH_CURRENT_CHAT'});
-
+    
 
   }, [dispatch] );
 
-  const filterMessages = () => {
-    console.log('Original messages:', allMessages);
+  // const filterMessages = () => {
+  //   console.log('Original messages:', allMessages);
 
-    // let filteredArray = allMessages.filter(data => data.user_id === user.id && data.liked_user_id === );
-  }
+  //   let filteredArray = allMessages.filter(data => data.user_id === user.id && data.liked_user_id === currentChat[0].liked_user_id);
+
+  //   console.log('This is the filtered array:', filteredArray);
+  // }
+  
 
   const handleChat = (event) => {
     props.setChat(event.target.value);
@@ -75,7 +78,7 @@ export default function LayoutTextFields(props) {
     axios
       .post("/api/user/chat", obj)
       .then((response) => {
-        
+        dispatch({ type: "FETCH_MESSAGES" });
         props.setChat('');
       })
       .catch((err) => {
@@ -94,8 +97,8 @@ export default function LayoutTextFields(props) {
       // });
         
   }
-
-
+  
+  // let filteredArray = filterMessages();
   return (
     <div className={classes.root}>
       
