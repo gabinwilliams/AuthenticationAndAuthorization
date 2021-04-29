@@ -1,4 +1,5 @@
 import React, {useState, useEffect} from "react";
+import axios from 'axios';
 import { useHistory } from 'react-router-dom';
 import { useDispatch, useSelector } from "react-redux";
 import Avatar from '@material-ui/core/Avatar';
@@ -7,6 +8,7 @@ import ChatBubbleIcon from '@material-ui/icons/ChatBubble';
 import IconButton from "@material-ui/core/IconButton";
 import ProfileEditHeader from '../ProfileEditHeader/ProfileEditHeader';
 import HomeModal from '../HomeModal/HomeModal';
+import MessagesAppBar from '../MessagesAppBar/MessagesAppBar';
 import './ConnectionPage.css';
 
 
@@ -28,14 +30,14 @@ const ConnectionPage = () => {
   }, [dispatch] );
 
   
-  let conditional = true;
+  
 
   const filterArray = () => {
     // let newNewArray = userProfiles.filter(data => data.id != user.id);
-    let likedArray = fetchUserLikes.filter(data => data.liked_user_id == user.id && data.liked == true);
+    let likedArray = fetchUserLikes.filter(data => data.liked_user_id == user.id && data.liked == true || data.liked_user_id == user.id && data.match == true);
     // let newArray = userProfiles.filter(data => data.id != user.id);
 
-    let finalArray = [];
+   
       
       
       console.log('filtered array for likes', likedArray);
@@ -61,8 +63,54 @@ const ConnectionPage = () => {
 
     }
 
-    const handleChat = () => {
+    const handleChat = (person) => {
+      console.log('This is the id to send', person);
+
+      let obj = {
+        user_id: user.id,
+        liked_user_id: person.user_id,
+        name: person.name,
+        profile_image: person.profile_image,
+        match: person.match,
+
+      }
+      console.log('This is obj to send:', obj);
+
+      axios
+      .post("/api/user/current/chat", obj)
+      .then((response) => {
+        
+        // dispatch({ type: "FETCH_MESSAGES" });
+        dispatch({ type: 'FETCH_CURRENT_CHAT'});
+      })
+      .catch((err) => {
+        console.log("Error in POST /current/chat", err);
+      });
+
+      dispatch({type: 'CHAT_ID', payload: obj});
+
       history.push('/messages');
+    }
+
+    const deleteConnection = (person) => {
+      console.log('delete clicked', person);
+
+      let obj = {
+        user_id: person,
+        
+      }
+      axios
+    .delete(`/api/profile/connection/request/${person}`)
+    .then((response) => {
+      console.log('DELETE from connectionPage:', response);
+      dispatch({type: 'FETCH_LIKES'})
+    })
+    .catch((err) => {
+      console.log("Error in DELETE", err);
+    });
+
+
+      
     }
 
 
@@ -70,10 +118,13 @@ const ConnectionPage = () => {
   return (
 
     <div>
-      <ProfileEditHeader />
+      {/* <ProfileEditHeader /> */}
+      <MessagesAppBar />
 
       {arrayToMap.map(person => (
+
         
+
       <div key={person.user_id}>
         
         <div className="connectionContainer">
@@ -98,17 +149,17 @@ const ConnectionPage = () => {
 
           <div className="buttonsContainer">
           { //Check if message failed
-        (person.match === false)
-          ? <div>
+        (person.match == false)
+          ? <div className="buttonWrapper" >
               <button onClick={() => updateMatch(person)}>Accept</button>
-              <button>Decline</button>
+              <button onClick={() => deleteConnection(person.user_id)}>Decline</button>
             </div>
           
           : <div> 
-              <IconButton onClick={handleChat}>
-                <ChatBubbleIcon fontSize="large"></ChatBubbleIcon>
+              <IconButton onClick={() => handleChat(person)}>
+                <ChatBubbleIcon className="chatBubble" fontSize="large"></ChatBubbleIcon>
               </IconButton>
-              <SimpleDateTime dateSeparator="-" format="MYD" showTime="0">{1588111492}</SimpleDateTime>
+              
             </div> 
       }
               

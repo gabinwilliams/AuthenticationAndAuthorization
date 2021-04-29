@@ -77,7 +77,7 @@ export default function HomeModal(props) {
 
   return (
     <div>
-      <IconButton className="modalBtn" type="button" onClick={handleOpen}>
+      <IconButton className="modalBtn"  onClick={handleOpen}>
         <ExpandMoreIcon fontSize="large">
 
         </ExpandMoreIcon>

@@ -100,8 +100,7 @@ const HomeCard = () => {
                
             
           }// end for z
-          
-          
+        
         }
 
         console.log('This is final filtered Array:', newNewArray);
@@ -109,9 +108,15 @@ const HomeCard = () => {
         return newNewArray;
       }
 
+     
+
  
   console.log('returned the normal array because not likes yet', newArray);
   return newArray;
+  }
+
+  const handleClick = (event) => {
+    console.log('clicked');
   }
 
 
@@ -136,7 +141,8 @@ const HomeCard = () => {
       <div className="cardContainer">
       
         {profileArray.map(person => (
-
+          <>
+          {/* <HomeModal  person={person}/> */}
           <TinderCard 
             key={person.name}
             className="swipe"
@@ -146,12 +152,13 @@ const HomeCard = () => {
             // prop from tinder-card library to prevent swiping up or down
             preventSwipe={['up', 'down']}
           >
-            
+             
             <div 
             className="card"
               
             style={{backgroundImage: `url(${person.profile_image})`}}
             >
+              
               <HomeModal  person={person}/>
               <h3 className="name">{person.name}</h3>
               <div className="techContainer">
@@ -159,12 +166,14 @@ const HomeCard = () => {
                 <h4 className="techChip">{person.tech_two}</h4>
                 <h4 className="techChip">{person.tech_three}</h4>
                 
+                
               </div>
               
             </div>
         
 
           </TinderCard> 
+          </>
         ))}
         
       </div>
