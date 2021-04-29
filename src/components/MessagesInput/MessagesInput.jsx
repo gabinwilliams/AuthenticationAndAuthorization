@@ -1,4 +1,5 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
+import axios from 'axios';
 import { useDispatch, useSelector } from "react-redux";
 import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
@@ -33,6 +34,13 @@ export default function LayoutTextFields(props) {
   const classes = useStyles();
 
   const chatPerson = useSelector((store) => store.chat);
+  const user = useSelector((store) => store.user);
+
+  // useEffect(() => {
+  //   dispatch({ type: "FETCH_CARDS" });
+  //   dispatch({ type: 'FETCH_LIKES'});
+
+  // }, [dispatch] );
 
 
   const handleChat = (event) => {
@@ -43,6 +51,35 @@ export default function LayoutTextFields(props) {
 
   const handleSend = () => {
     console.log('This is the chatPerson:', chatPerson);
+
+    let obj = {
+      user_id: user.id,
+      liked_user_id: chatPerson.user_id,
+      name: chatPerson.name,
+      profile_image: chatPerson.profile_image,
+      match: chatPerson.match
+    }
+
+    axios
+      .post("/api/user/chat", obj)
+      .then((response) => {
+        
+        
+      })
+      .catch((err) => {
+        console.log("Error in POST /chat", err);
+      });
+
+      axios
+      .post("/api/user/current/chat", obj)
+      .then((response) => {
+        
+        
+      })
+      .catch((err) => {
+        console.log("Error in POST /current/chat", err);
+      });
+
   }
 
 
