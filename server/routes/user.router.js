@@ -82,15 +82,19 @@ router.post('/chat', (req, res) => {
     });
 });
 
+
+
 router.post('/current/chat', (req, res) => {
   // const username = req.body.username;
   // const password = encryptLib.encryptPassword(req.body.password);
 
   console.log('In POST /current/chat', req.body);
-  const queryText = `INSERT INTO "current_chat" (user_id, liked_user_id, message, match)
-    VALUES ($1, $2, $3, $4) `;
+  const queryText = `UPDATE "current_chat" 
+  SET "user_id" = $1, "liked_user_id" = $2, "name" = $3, "profile_image" = $4, "match" = $5
+  WHERE "current_chat".id = 1;
+  `;
   pool
-    .query(queryText, [req.body.user_id, req.body.liked_user_id, req.body.message, req.body.match])
+    .query(queryText, [req.body.user_id, req.body.liked_user_id, req.body.name, req.body.profile_image, req.body.match])
     .then(() => res.sendStatus(201))
     .catch((err) => {
       console.log('error in POST current_chat ', err);
