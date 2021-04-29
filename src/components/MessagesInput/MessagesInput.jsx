@@ -35,16 +35,22 @@ export default function LayoutTextFields(props) {
 
   const dispatch = useDispatch();
 
-  const chatPerson = useSelector((store) => store.chat);
+  const currentChat = useSelector((store) => store.currentChat);
   const user = useSelector((store) => store.user);
+  const allMessages = useSelector((store) => store.messages);
 
   useEffect(() => {
     dispatch({ type: "FETCH_MESSAGES" });
-    // dispatch({ type: 'FETCH_LIKES'});
+    dispatch({ type: 'FETCH_CURRENT_CHAT'});
 
 
   }, [dispatch] );
 
+  const filterMessages = () => {
+    console.log('Original messages:', allMessages);
+
+    // let filteredArray = allMessages.filter(data => data.user_id === user.id && data.liked_user_id === );
+  }
 
   const handleChat = (event) => {
     props.setChat(event.target.value);
@@ -53,36 +59,39 @@ export default function LayoutTextFields(props) {
   }
 
   const handleSend = () => {
-    console.log('This is the chatPerson:', chatPerson);
+    console.log('This is the chatPerson:', currentChat);
 
     let obj = {
       user_id: user.id,
-      liked_user_id: chatPerson.user_id,
-      name: chatPerson.name,
-      profile_image: chatPerson.profile_image,
-      match: chatPerson.match,
+      liked_user_id: currentChat[0].liked_user_id,
+      name: currentChat[0].name,
+      profile_image: currentChat[0].profile_image,
+      match: currentChat[0].match,
       message: props.chat,
     }
 
+    
+    console.log('This is obj to send:', obj);
     axios
       .post("/api/user/chat", obj)
       .then((response) => {
         
-        
+        props.setChat('');
       })
       .catch((err) => {
         console.log("Error in POST /chat", err);
       });
 
-      axios
-      .post("/api/user/current/chat", obj)
-      .then((response) => {
-        props.setChat('');
-        dispatch({ type: "FETCH_MESSAGES" });
-      })
-      .catch((err) => {
-        console.log("Error in POST /current/chat", err);
-      });
+      // axios
+      // .post("/api/user/current/chat", obj)
+      // .then((response) => {
+      //   props.setChat('');
+      //   // dispatch({ type: "FETCH_MESSAGES" });
+      //   // dispatch({ type: 'FETCH_CURRENT_CHAT'});
+      // })
+      // .catch((err) => {
+      //   console.log("Error in POST /current/chat", err);
+      // });
         
   }
 
@@ -106,7 +115,7 @@ export default function LayoutTextFields(props) {
             variant="outlined"
             onChange={handleChat}
           />
-          <IconButton onClick={handleSend}>
+          <IconButton onClick={() => handleSend()}>
             <SendIcon color='primary' fontSize="large"></SendIcon>
           </IconButton>
         </div>

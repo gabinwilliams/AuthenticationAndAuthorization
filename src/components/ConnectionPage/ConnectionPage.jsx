@@ -66,13 +66,25 @@ const ConnectionPage = () => {
       console.log('This is the id to send', person);
 
       let obj = {
-        user_id: person.user_id,
+        user_id: user.id,
+        liked_user_id: person.user_id,
         name: person.name,
         profile_image: person.profile_image,
         match: person.match,
 
       }
       console.log('This is obj to send:', obj);
+
+      axios
+      .post("/api/user/current/chat", obj)
+      .then((response) => {
+        
+        // dispatch({ type: "FETCH_MESSAGES" });
+        dispatch({ type: 'FETCH_CURRENT_CHAT'});
+      })
+      .catch((err) => {
+        console.log("Error in POST /current/chat", err);
+      });
 
       dispatch({type: 'CHAT_ID', payload: obj});
 
