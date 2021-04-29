@@ -8,6 +8,7 @@ import ChatBubbleIcon from '@material-ui/icons/ChatBubble';
 import IconButton from "@material-ui/core/IconButton";
 import ProfileEditHeader from '../ProfileEditHeader/ProfileEditHeader';
 import HomeModal from '../HomeModal/HomeModal';
+import MessagesAppBar from '../MessagesAppBar/MessagesAppBar';
 import './ConnectionPage.css';
 
 
@@ -117,7 +118,8 @@ const ConnectionPage = () => {
   return (
 
     <div>
-      <ProfileEditHeader />
+      {/* <ProfileEditHeader /> */}
+      <MessagesAppBar />
 
       {arrayToMap.map(person => (
 
