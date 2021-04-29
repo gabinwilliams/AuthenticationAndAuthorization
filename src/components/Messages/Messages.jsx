@@ -3,6 +3,8 @@ import { useDispatch, useSelector } from "react-redux";
 import './Messages.css';
 import MessagesHeader from '../MessagesHeader/MessagesHeader';
 import MessagesInput from '../MessagesInput/MessagesInput';
+import MessagesAppBar from '../MessagesAppBar/MessagesAppBar';
+import { data } from 'autoprefixer';
 
 const Messages = () => {
   
@@ -38,50 +40,48 @@ const Messages = () => {
   let filteredArray = filterMessages();
 
 
-  // (person.match === false)
-  // ? <div className="buttonWrapper" >
-  //     <button onClick={() => updateMatch(person)}>Accept</button>
-  //     <button onClick={() => deleteConnection(person.user_id)}>Decline</button>
-  //   </div>
-  
-  // : <div> 
-  //     <IconButton onClick={() => handleChat(person)}>
-  //       <ChatBubbleIcon className="chatBubble" fontSize="large"></ChatBubbleIcon>
-  //     </IconButton>
 
   return (
-    <div>
-      <MessagesHeader />
-      <div className="messageContainer">
-      {filteredArray.map(chat =>  (
-        <div className="chatContainer">
 
-          <div className="messageOne">
+    <div>
+      <div className="headerz">
+        {/* <MessagesHeader /> */}
+        <MessagesAppBar />
+      </div>
+      <div className="messageContainer">
+      {/* {filteredArray.map(chat =>  ( */}
+        
+
           
 
-         { (user.id == currentChat[0].user_id) ?
+          {filteredArray.map(chat =>  (
+          <div>
+         { (user.id == chat.user_id) ?
           
                 <div className="messageTwo">
-                  
+                  <p>{chat.message}</p>
                   
                 </div>
 
-                    : <div className="message1Image" style={{backgroundImage: `url(https://images.unsplash.com/photo-1600603405959-6d623e92445c?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mzl8fG1hbnxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=60)`}}
-                  
-                   >
-                  </div>}
-
-                <p>{chat.message}</p>
-              
-          </div>
-
+                    : 
+                    <div className="messageOne">
+                      <div className="message1Image" style={{backgroundImage: `url(${currentChat[0].profile_image})`}}>
+                      </div>  
+                      <p>{chat.message}</p>
+                     </div>
+                    }
+                
           
-        </div>
+            </div>
+                  ))}
+          
         
-        ))}
+        
+         {/* ))} */}
         </div>
-    
-      <MessagesInput chat={chat} setChat={setChat}/>
+      <div className="input">
+        <MessagesInput chat={chat} setChat={setChat}/>
+      </div>
     </div>
   )
 }
