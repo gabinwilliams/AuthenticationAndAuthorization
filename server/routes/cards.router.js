@@ -59,7 +59,7 @@ router.put('/match', (req, res) => {
   console.log('In POST /match', req.body);
   const queryText = `UPDATE "user_likes" 
     SET "match" = $1
-    WHERE "user_id" = ${req.body.user_id} AND "liked_user_id" = ${req.body.liked_user_id}
+    WHERE "user_id" = ${req.body.user_id} AND "liked_user_id" = ${req.body.liked_user_id} OR "user_id" = ${req.body.liked_user_id} AND "liked_user_id" = ${req.body.user_id}
     ;`;
   pool
     .query(queryText, [req.body.match])

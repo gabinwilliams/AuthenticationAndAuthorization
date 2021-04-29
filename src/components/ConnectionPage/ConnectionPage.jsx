@@ -29,14 +29,14 @@ const ConnectionPage = () => {
   }, [dispatch] );
 
   
-  let conditional = true;
+  
 
   const filterArray = () => {
     // let newNewArray = userProfiles.filter(data => data.id != user.id);
-    let likedArray = fetchUserLikes.filter(data => data.liked_user_id == user.id && data.liked == true);
+    let likedArray = fetchUserLikes.filter(data => data.liked_user_id == user.id && data.liked == true || data.liked_user_id == user.id && data.match == true);
     // let newArray = userProfiles.filter(data => data.id != user.id);
 
-    let finalArray = [];
+   
       
       
       console.log('filtered array for likes', likedArray);
@@ -120,7 +120,9 @@ const ConnectionPage = () => {
       <ProfileEditHeader />
 
       {arrayToMap.map(person => (
+
         
+
       <div key={person.user_id}>
         
         <div className="connectionContainer">
@@ -145,7 +147,7 @@ const ConnectionPage = () => {
 
           <div className="buttonsContainer">
           { //Check if message failed
-        (person.match === false)
+        (person.match == false)
           ? <div className="buttonWrapper" >
               <button onClick={() => updateMatch(person)}>Accept</button>
               <button onClick={() => deleteConnection(person.user_id)}>Decline</button>
