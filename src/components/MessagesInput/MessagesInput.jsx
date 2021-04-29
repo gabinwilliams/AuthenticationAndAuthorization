@@ -57,7 +57,8 @@ export default function LayoutTextFields(props) {
       liked_user_id: chatPerson.user_id,
       name: chatPerson.name,
       profile_image: chatPerson.profile_image,
-      match: chatPerson.match
+      match: chatPerson.match,
+      message: props.chat,
     }
 
     axios
@@ -73,13 +74,13 @@ export default function LayoutTextFields(props) {
       axios
       .post("/api/user/current/chat", obj)
       .then((response) => {
-        
+        props.setChat('');
         
       })
       .catch((err) => {
         console.log("Error in POST /current/chat", err);
       });
-
+        
   }
 
 
@@ -97,6 +98,7 @@ export default function LayoutTextFields(props) {
             // defaultValue="Default Value"
             className={classes.textField}
             // helperText="Some important text"
+            value={props.chat}
             margin="normal"
             variant="outlined"
             onChange={handleChat}
