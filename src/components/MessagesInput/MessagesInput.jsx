@@ -16,6 +16,7 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: 'center',
     flexWrap: 'wrap',
     borderRadius: 5,
+    // height: 150,
   },
   textField: {
     marginLeft: theme.spacing(1),
