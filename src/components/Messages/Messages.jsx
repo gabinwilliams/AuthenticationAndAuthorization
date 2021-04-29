@@ -1,9 +1,15 @@
-import React from 'react'
+import React, {useState} from 'react'
+import { useDispatch, useSelector } from "react-redux";
 import './Messages.css';
 import MessagesHeader from '../MessagesHeader/MessagesHeader';
 import MessagesInput from '../MessagesInput/MessagesInput';
 
 const Messages = () => {
+  
+  const [chat, setChat] = useState('');
+
+  const chatPerson = useSelector((store) => store.chat);
+
   return (
     <div>
       <MessagesHeader />
@@ -26,7 +32,7 @@ const Messages = () => {
         </div>
         
       </div>
-      <MessagesInput />
+      <MessagesInput chat={chat} setChat={setChat}/>
     </div>
   )
 }

@@ -16,7 +16,7 @@ const ProfileEditHome = () => {
   }
 
   return (
-    <div className="header">
+    <div className="messagesHeader">
       <IconButton onClick={handleClick}>
         <ArrowBackIosIcon className="backIcon" fontSize="large" />
       </IconButton>
