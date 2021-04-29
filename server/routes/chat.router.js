@@ -26,6 +26,22 @@ const userStrategy = require('../strategies/user.strategy');
 
 });
 
+router.get('/currentChat', (req, res) => {
+
+  const query = `SELECT * FROM "current_chat";`
+
+  pool.query(query)
+    .then( result => {
+     
+      res.send(result.rows);
+    })
+    .catch(err => {
+      console.log('ERROR: Get currentChat', err);
+      res.sendStatus(500)
+    })
+
+});
+
 /**
  * POST route template
  */
