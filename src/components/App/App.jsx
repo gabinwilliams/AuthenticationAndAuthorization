@@ -32,6 +32,8 @@ function App() {
   useEffect(() => {
     dispatch({ type: 'FETCH_USER' });
     dispatch({type: 'FETCH_LIKES'});
+    dispatch({type: 'FETCH_MESSAGES'});
+    dispatch({ type: 'FETCH_CURRENT_CHAT'});
     
   }, [dispatch]);
 
