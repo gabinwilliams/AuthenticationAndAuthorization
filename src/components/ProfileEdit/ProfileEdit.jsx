@@ -4,6 +4,7 @@ import React, {useState, useEffect} from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import ProfileEditImage from '../ProfileEditImage/ProfileEditImage';
 import ProfileTech from '../ProfileTech/ProfileTech';
+import ProfileEditHomeBarApp from '../ProfileEditHomeBarApp/ProfileEditHomeBarApp';
 import TextField from '@material-ui/core/TextField';
 import { makeStyles } from '@material-ui/core/styles';
 import InputLabel from '@material-ui/core/InputLabel';
@@ -154,7 +155,8 @@ export default function ProfileForm(props) {
 
   return (
     <div>
-      <ProfileEditHeader/>
+      {/* <ProfileEditHeader/> */}
+      <ProfileEditHomeBarApp />
       <form className={classes.root} noValidate autoComplete="off">
         
         <div className="formContainer">
