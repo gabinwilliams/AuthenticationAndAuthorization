@@ -110,7 +110,7 @@ function App() {
             // - else shows RegisterPage at "/registration"
             exact
             path="/registration"
-            authRedirect="/mainView"
+            authRedirect="/user"
           >
             <RegisterPage />
           </ProtectedRoute>

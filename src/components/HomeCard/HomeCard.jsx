@@ -154,7 +154,7 @@ const HomeCard = () => {
             preventSwipe={['up', 'down']}
           >
              
-            <div 
+            <div key={person.name}
             className="card"
               
             style={{backgroundImage: `url(${person.profile_image})`}}

@@ -103,7 +103,7 @@ export default function ProfileForm(props) {
   return (
     <form className={classes.root} noValidate autoComplete="off">
       
-      <div className="formContainer">
+      <div className="ProfileFormContainer">
         
         <ProfileImage image={image} setImage={setImage}/>
         

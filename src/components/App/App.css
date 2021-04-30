@@ -8,6 +8,7 @@ body,
 body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   margin: 0px;
+  padding: 0px;
   
 }
 
@@ -63,6 +64,8 @@ Button
 
 /* This line makes the "Register" and "Login" buttons look like links */
 .btn_asLink {
+  /* position: absolute;
+  bottom: 300px; */
   padding: 0;
   border-width: 0;
   border-bottom: 1px solid #444;
@@ -96,8 +99,34 @@ Alert
 /* --------------------------------------------------------------------------------
 Form Treatment
 -------------------------------------------------------------------------------- */
-
 .formPanel {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(220, 220, 220, .8);
+  height: 300px;
+  width: 250px;
+  border-radius: 10px;
+ 
+}
+
+.container {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-size: cover;
+  background-position: center;
+  margin: 0;
+  border-radius: 0;
+  /* margin: 20px; 
+  padding: 20px; */
+  height: 100vh;
+}
+
+/* .formPanel {
   box-sizing: border-box;
   width: 400px;
   max-width: 100%;
@@ -106,7 +135,7 @@ Form Treatment
   background-color: #efefef;
   border-radius: 3px;
   box-shadow: 0 1px 2px rgb(0, 0, 0, 0.4);
-}
+} */
 
 input {
   margin: 5px;

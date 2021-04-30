@@ -6,6 +6,8 @@ import ProfileEditImage from '../ProfileEditImage/ProfileEditImage';
 import ProfileTech from '../ProfileTech/ProfileTech';
 import ProfileEditHomeBarApp from '../ProfileEditHomeBarApp/ProfileEditHomeBarApp';
 import TextField from '@material-ui/core/TextField';
+import Button from '@material-ui/core/Button';
+import SaveIcon from '@material-ui/icons/Save';
 import { makeStyles } from '@material-ui/core/styles';
 import InputLabel from '@material-ui/core/InputLabel';
 import MenuItem from '@material-ui/core/MenuItem';
@@ -29,6 +31,12 @@ const useStyles = makeStyles((theme) => ({
   selectEmpty: {
     marginTop: theme.spacing(2),
   },
+  button: {
+    position: 'absolute',
+    top: 30,
+    right: 35,
+  }
+
 }));
 
 export default function ProfileForm(props) {
@@ -155,12 +163,20 @@ export default function ProfileForm(props) {
 
   return (
     <div>
-      {/* <ProfileEditHeader/> */}
+      
       <ProfileEditHomeBarApp />
       <form className={classes.root} noValidate autoComplete="off">
         
         <div className="formContainer">
-          <button className="saveBtn" onClick={registerUserInfo}>Save Changes</button>
+        <Button
+        variant="contained"
+        color="primary"
+        size="small"
+        className={classes.button}
+        startIcon={<SaveIcon />}
+        onClick={registerUserInfo}
+        >Save</Button>
+           {/* <button className="saveBtn" onClick={registerUserInfo}>Save Changes</button> */}
           <ProfileEditImage image={image} setImage={setImage}/>
           
           <TextField
