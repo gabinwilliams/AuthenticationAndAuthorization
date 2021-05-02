@@ -2,6 +2,7 @@ import React, {useState, useEffect} from "react";
 import { useDispatch, useSelector } from "react-redux";
 import HomeModal from '../HomeModal/HomeModal';
 import TinderCard from 'react-tinder-card';
+import HomeAppBar from '../HomeAppBar/HomeAppBar';
 import axios from "axios";
 import './HomeCard.css';
 import { array } from "prop-types";
@@ -153,7 +154,7 @@ const HomeCard = () => {
             preventSwipe={['up', 'down']}
           >
              
-            <div 
+            <div key={person.name}
             className="card"
               
             style={{backgroundImage: `url(${person.profile_image})`}}

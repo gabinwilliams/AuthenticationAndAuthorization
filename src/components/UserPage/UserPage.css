@@ -1,5 +1,5 @@
 
-.container {
+.userPageContainer {
   position: relative;
   margin: 20px;
   padding: 20px;
@@ -8,6 +8,3 @@
   box-shadow: 0px 18px 53px 0px rgba(0, 0, 0, 0.3);
 }
 
-/* .hero {
-  /* margin: 25px; */
-/* }  */
