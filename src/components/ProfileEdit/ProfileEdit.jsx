@@ -4,6 +4,9 @@ import React, {useState, useEffect} from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import ProfileEditImage from '../ProfileEditImage/ProfileEditImage';
 import ProfileTech from '../ProfileTech/ProfileTech';
+import LogoutHover from '../LogoutHover/LogoutHover';
+import swal from 'sweetalert';
+
 import ProfileEditHomeBarApp from '../ProfileEditHomeBarApp/ProfileEditHomeBarApp';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
@@ -16,6 +19,7 @@ import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 import ProfileTechChip from '../ProfileTechChip/ProfileTechChip';
 import './ProfileEdit.css';
+import { AirlineSeatLegroomReducedTwoTone } from '@material-ui/icons';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -54,14 +58,9 @@ export default function ProfileForm(props) {
   const [github, setGithub] = useState('');
   const [bio, setBio] = useState('');
   const [tech, setTech] = React.useState([]);
+  
 
-  const [chipData, setChipData] = useState([
-    { key: 0, label: 'Angular' },
-    { key: 1, label: 'jQuery' },
-    { key: 2, label: 'Polymer' },
-    { key: 3, label: 'React' },
-    { key: 4, label: 'Vue.js' },
-  ]);
+ 
   
 
   const handleChangeDev = (event) => {
@@ -86,8 +85,9 @@ export default function ProfileForm(props) {
 
 
 
-  const registerUserInfo = (event) => {
+  const registerUserInfo = async (event) => {
     event.preventDefault();
+    
     console.log('This is user before changes:', user);
     let newTechOne = tech[0];
     let newTechTwo = tech[1];
@@ -123,7 +123,7 @@ export default function ProfileForm(props) {
         newTechThree = user.tech_three;
       } 
 
-    
+      
 
     dispatch({
       type: 'UPDATE_PROFILE',
@@ -140,23 +140,13 @@ export default function ProfileForm(props) {
         github: newGithub,
         active: true,
       },
+
+      
+      
     });
     
-
-      console.log('This is Object to send after changes:', {
-        id: user.id,
-        username: user.username,
-        name: newName,
-        dev_type: newDev,
-        tech_one: newTechOne,
-        tech_two: newTechTwo,
-        tech_three: newTechThree,
-        profile_image: newImage,
-        bio: newBio,
-        github: newGithub,
-        active: true,
-      });
-
+    swal("Updated!", "", "success");
+    
   }; 
 
   
@@ -176,7 +166,8 @@ export default function ProfileForm(props) {
         startIcon={<SaveIcon />}
         onClick={registerUserInfo}
         >Save</Button>
-           {/* <button className="saveBtn" onClick={registerUserInfo}>Save Changes</button> */}
+          
+
           <ProfileEditImage image={image} setImage={setImage}/>
           
           <TextField
