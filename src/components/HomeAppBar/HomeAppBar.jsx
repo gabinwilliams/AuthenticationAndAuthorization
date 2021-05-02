@@ -91,7 +91,7 @@ export default function MenuAppBar() {
           </IconButton>
           <IconButton onClick={handleHome} color="inherit">
             <Typography variant="h6" className={classes.title}>
-              Front to Back
+              <img src="https://raw.githubusercontent.com/gabinwilliams/soloProject/dbefa8109221083e23f6aed34000e0f81c9ccf2c/public/Images/Component%201.svg" alt="Profile pic"/>
             </Typography>
           </IconButton>
           <IconButton onClick={handleClickConnection} color="inherit">
