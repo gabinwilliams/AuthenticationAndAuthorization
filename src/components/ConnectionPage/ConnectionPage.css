@@ -3,9 +3,16 @@
   
   /* position: relative; */
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-between;
 
 }
+
+.connectionPageContainer {
+  padding-top: 50px;
+  margin: 50px;
+}
+
+
 
 .profileName {
   display: flex;

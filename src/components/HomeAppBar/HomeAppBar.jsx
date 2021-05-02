@@ -91,11 +91,11 @@ export default function MenuAppBar() {
           </IconButton>
           <IconButton onClick={handleHome} color="inherit">
             <Typography variant="h6" className={classes.title}>
-              <img src="https://raw.githubusercontent.com/gabinwilliams/soloProject/dbefa8109221083e23f6aed34000e0f81c9ccf2c/public/Images/Component%201.svg" alt="Profile pic"/>
+              <img src="https://raw.githubusercontent.com/gabinwilliams/soloProject/8adb4c43f2c3e5f4d56d4d4986816dee6279d829/public/Images/Component%201-5.svg" alt="Profile pic"/>
             </Typography>
           </IconButton>
           <IconButton onClick={handleClickConnection} color="inherit">
-            <ForumIcon className="headerIcon"   />
+            <ForumIcon   />
           </IconButton>
         </Toolbar>
       </AppBar>
