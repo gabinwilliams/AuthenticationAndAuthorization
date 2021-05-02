@@ -52,7 +52,7 @@ export default function MenuAppBar() {
   };
 
   const handleClickBack = () => {
-    history.goBack();
+    history.push('/mainView');
   }
 
   const handleHome = () => {

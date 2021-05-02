@@ -48,7 +48,15 @@ const names = [
   'React',
   'Vue.js',
   'Next.js',
-  
+  'JavaScript',
+  'Python',
+  'TypeScript',
+  'Ruby',
+  'Node',
+  'PostgreSQL',
+  'MongoDB',
+  'Redux',
+  'Redux-Saga',
   
 ];
 
