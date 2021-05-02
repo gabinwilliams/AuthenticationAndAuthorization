@@ -115,7 +115,9 @@ export default function HomeModal(props) {
                 <p className="github">{props.person.dev_type}</p>
               </div>
               <div className="devType">
-                <p className="github">{props.person.github}</p>
+                {/* <link rel="stylesheet" href={props.person.github}/> */}
+                <a className="github" href={props.person.github}>Github</a>
+                {/* <p className="github">{props.person.github}</p> */}
               </div>
             </div>
           

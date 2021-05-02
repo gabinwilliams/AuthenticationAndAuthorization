@@ -1,6 +1,7 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { useHistory } from 'react-router-dom';
+import LogoutHover from '../LogoutHover/LogoutHover';
 import AppBar from '@material-ui/core/AppBar';
 import LogoutOutButton from '../LogOutButton/LogOutButton';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -88,7 +89,9 @@ export default function MenuAppBar() {
               <img src="https://raw.githubusercontent.com/gabinwilliams/soloProject/8adb4c43f2c3e5f4d56d4d4986816dee6279d829/public/Images/Component%201-5.svg" alt="Logo"/>
             </Typography>
           </IconButton>
-          <LogoutOutButton />
+          <LogoutHover>
+            
+          </LogoutHover>
         </Toolbar>
       </AppBar>
     </div>

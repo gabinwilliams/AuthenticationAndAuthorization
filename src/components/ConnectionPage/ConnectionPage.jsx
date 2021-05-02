@@ -18,7 +18,8 @@ const useStyles = makeStyles((theme) => ({
     margin: theme.spacing(1),
   },
   chatBubble: {
-    marginRight: 20,
+    // paddingRight: 20,
+    
   }
  
 }));
@@ -182,11 +183,10 @@ const ConnectionPage = () => {
               >
                 Decline
               </Button>
-              {/* <button onClick={() => updateMatch(person)}>Accept</button> */}
-              {/* <button onClick={() => deleteConnection(person.user_id)}>Decline</button> */}
+             
             </div>
           
-          : <div> 
+          : <div > 
               <IconButton onClick={() => handleChat(person)}>
                 <ChatBubbleIcon className={classes.chatBubble} fontSize="large"></ChatBubbleIcon>
               </IconButton>
