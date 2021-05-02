@@ -16,9 +16,9 @@
 
 .profileName {
   display: flex;
-  align-content: flex-start;
-  margin-right: 20px;
-  margin-bottom: 75px;
+  margin-left: 20px;
+  color: gray;
+
 }
 
 
@@ -35,6 +35,8 @@
 .imageBtn{
   display: flex;
   align-items: center;
+  
+  
 }
 
 .buttonWrapper{
