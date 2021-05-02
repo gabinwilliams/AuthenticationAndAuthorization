@@ -145,13 +145,15 @@ const ConnectionPage = () => {
           <div className="connectionTile">
             <div className="imageBtn">
               <HomeModal open={open} setOpen={setOpen} person={person}/>
+              
               <div className="profileImageContainer"
                   style={{backgroundImage: `url(${person.profile_image})`}}>
               </div>
+              <p className="profileName" >{person.name}</p>
             </div>
               
             <div>
-              <p className="profileName" >{person.name}</p>
+              
               <div className="techContainer">
                 <p className="tech">{person.tech_one}</p>
                 <p className="tech">{person.tech_two}</p>
