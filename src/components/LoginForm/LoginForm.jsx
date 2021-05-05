@@ -3,8 +3,24 @@ import { useDispatch } from 'react-redux';
 import {useSelector} from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import './LoginForm.css';
+import { makeStyles } from '@material-ui/core/styles';
+import TextField from '@material-ui/core/TextField';
+
+
+
+const useStyles = makeStyles((theme) => ({
+  root: {
+    '& > *': {
+      margin: theme.spacing(1),
+      width: '25ch',
+    },
+  },
+}));
+
+
 
 function LoginForm() {
+  const classes = useStyles();
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const errors = useSelector(store => store.errors);
@@ -42,7 +58,26 @@ function LoginForm() {
         </h3>
       )}
       <div>
-        <label htmlFor="username">
+
+
+      <form className={classes.root} noValidate autoComplete="off">
+        <TextField id="standard-basic" label="username"
+        value={username}
+        required
+        onChange={(event) => setUsername(event.target.value)}
+        />
+
+
+        <TextField id="standard-basic" label="password" 
+        id="standard-password-input"
+        type="password"
+        value={password}
+        required
+        onChange={(event) => setPassword(event.target.value)}
+        />
+        
+      </form>
+        {/* <label htmlFor="username">
           Username:
           <input
             type="text"
@@ -63,7 +98,7 @@ function LoginForm() {
             value={password}
             onChange={(event) => setPassword(event.target.value)}
           />
-        </label>
+        </label> */}
       </div>
       <div>
         <input className="btn" type="submit" name="submit" value="Log In" />

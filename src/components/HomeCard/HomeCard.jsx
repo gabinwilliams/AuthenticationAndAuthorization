@@ -18,14 +18,14 @@ const HomeCard = () => {
   const userProfiles = useSelector((store) => store.userProfiles);
  
   
-  
+  let filteredProfiles = userProfiles.filter(data => data.id != user.id);
  
 
   useEffect(() => {
     dispatch({ type: "FETCH_CARDS" });
     dispatch({ type: 'FETCH_LIKES'});
 
-  }, [dispatch] );
+  }, [] );
 
 
   const onSwipe = (id, direction) => { 
@@ -39,7 +39,7 @@ const HomeCard = () => {
           liked: direction,
           liked_user_id: id
         }
-
+console.log('Swiped person:', obj);
         axios
       .post("/api/user/updateLikes", obj)
       .then((response) => {
@@ -52,96 +52,37 @@ const HomeCard = () => {
       });
       
     }
-      if(direction === 'left') {
-        direction = false;
+      // if(direction === 'left') {
+      //   direction = false;
 
-        let obj = {
-          user_id: user.id,
-          liked: direction,
-          liked_user_id: id
-        }
-        axios
-      .post("/api/user/updateLikes", obj)
-      .then((response) => {
-        console.log('POST obj from Swipe:', response);
-        
-      })
-      .catch((err) => {
-        console.log("Error in POST", err);
-      });
+      //   let obj = {
+      //     user_id: user.id,
+      //     liked: direction,
+      //     liked_user_id: id
+      //   }
+      //   axios
+      // .post("/api/user/updateLikes", obj)
+      // .then((response) => {
+      //   console.log('POST obj from Swipe:', response);
+      //   // dispatch({type: 'FETCH_LIKES'});
+      // })
+      // .catch((err) => {
+      //   console.log("Error in POST", err);
+      // });
 
-     
-
-        
-      
-      }
+      // }
       
   }
-  const filterArray = () => {
-    let newNewArray = userProfiles.filter(data => data.id != user.id);
-    let likedArray = fetchUserLikes.filter(data => data.username == user.username && data.liked == true);
-    let newArray = userProfiles.filter(data => data.id != user.id);
-
-    let finalArray = [];
-      
-      
-      
-
-
-      if(fetchUserLikes.length != 0) {
-        for(let i = 0; i < newArray.length; i++) {
-          for(let z = 0; z < likedArray.length; z++) {
-              if(newArray[i].id === likedArray[z].liked_user_id){
-              console.log('This will be pushed to FinalArray:', likedArray[z].liked_user_id);
-              
-                console.log(newArray.indexOf(newArray[i]));
-                let indexToRemove = newArray.indexOf(newArray[i]);
-                newNewArray.splice(indexToRemove, 100)
-                 }    
-               
-            
-          }// end for z
-        
-        }
-
-        console.log('This is final filtered Array:', newNewArray);
-        
-        return newNewArray;
-      }
-
-     
-
- 
-  console.log('returned the normal array because not likes yet', newArray);
-  return newArray;
-  }
-
-  const handleClick = (event) => {
-    console.log('clicked');
-  }
-
-
-  let profileArray = filterArray();
   
-
-
-  
- 
-  
-
-
+  console.log('filtered array: ', filteredProfiles);
   
   return (
     
     <div>
       
-      
-    
-      
-       
       <div className="cardContainer">
       
-        {profileArray.map(person => (
+        {filteredProfiles.map(person => (
           <>
           {/* <HomeModal  person={person}/> */}
           <TinderCard 
@@ -160,7 +101,7 @@ const HomeCard = () => {
             style={{backgroundImage: `url(${person.profile_image})`}}
             >
               
-              <HomeModal  person={person}/>
+              <HomeModal key={person.name}  person={person}/>
               <h3 className="name">{person.name}</h3>
               <div className="techContainer">
                 <h4 className="techChip">{person.tech_one}</h4>

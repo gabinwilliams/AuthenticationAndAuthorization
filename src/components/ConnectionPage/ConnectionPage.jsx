@@ -47,7 +47,8 @@ const ConnectionPage = () => {
 
   const filterArray = () => {
     // let newNewArray = userProfiles.filter(data => data.id != user.id);
-    let likedArray = fetchUserLikes.filter(data => data.liked_user_id == user.id && data.liked == true || data.liked_user_id == user.id && data.match == true);
+    let likedArray = fetchUserLikes.filter(data => data.liked_user_id == user.id && data.liked == true
+      || data.match == true && data.user_id != user.id);
     // let newArray = userProfiles.filter(data => data.id != user.id);
 
    
