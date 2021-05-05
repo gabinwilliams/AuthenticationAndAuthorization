@@ -3,15 +3,22 @@
   
   /* position: relative; */
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-between;
 
 }
 
+.connectionPageContainer {
+  padding-top: 50px;
+  margin: 50px;
+}
+
+
+
 .profileName {
   display: flex;
-  align-content: flex-start;
-  margin-right: 20px;
-  margin-bottom: 75px;
+  margin-left: 20px;
+  color: gray;
+
 }
 
 
@@ -28,11 +35,14 @@
 .imageBtn{
   display: flex;
   align-items: center;
+  
+  
 }
 
 .buttonWrapper{
   display: flex;
   flex-direction: column;
+ 
 }
 
 .connectionTile{

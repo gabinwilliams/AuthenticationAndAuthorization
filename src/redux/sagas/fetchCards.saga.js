@@ -38,6 +38,7 @@ function* fetchCardsSaga() {
   yield takeLatest('FETCH_CARDS', getUserProfiles);
   yield takeLatest('FETCH_LIKES', fetchUserLikes);
   
+  
 }
 
 export default fetchCardsSaga;

@@ -2,6 +2,8 @@ import React, {useState, useEffect} from "react";
 import axios from 'axios';
 import { useHistory } from 'react-router-dom';
 import { useDispatch, useSelector } from "react-redux";
+import Button from '@material-ui/core/Button';
+import { makeStyles } from '@material-ui/core/styles';
 import Avatar from '@material-ui/core/Avatar';
 import SimpleDateTime  from 'react-simple-timestamp-to-date';
 import ChatBubbleIcon from '@material-ui/icons/ChatBubble';
@@ -11,12 +13,23 @@ import HomeModal from '../HomeModal/HomeModal';
 import MessagesAppBar from '../MessagesAppBar/MessagesAppBar';
 import './ConnectionPage.css';
 
-
+const useStyles = makeStyles((theme) => ({
+  button: {
+    margin: theme.spacing(1),
+  },
+  chatBubble: {
+    // paddingRight: 20,
+    
+  }
+ 
+}));
 
 
 const ConnectionPage = () => {
+
   const dispatch = useDispatch();
   const history = useHistory();
+  const classes = useStyles();
   const user = useSelector((store) => store.user);
   const fetchUserLikes = useSelector((store) => store.fetchUserLikes);
   const userProfiles = useSelector((store) => store.userProfiles);
@@ -34,7 +47,8 @@ const ConnectionPage = () => {
 
   const filterArray = () => {
     // let newNewArray = userProfiles.filter(data => data.id != user.id);
-    let likedArray = fetchUserLikes.filter(data => data.liked_user_id == user.id && data.liked == true || data.liked_user_id == user.id && data.match == true);
+    let likedArray = fetchUserLikes.filter(data => data.liked_user_id == user.id && data.liked == true
+      || data.match == true && data.user_id != user.id);
     // let newArray = userProfiles.filter(data => data.id != user.id);
 
    
@@ -118,9 +132,9 @@ const ConnectionPage = () => {
   return (
 
     <div>
-      {/* <ProfileEditHeader /> */}
+      
       <MessagesAppBar />
-
+    <div className="connectionPageContainer">
       {arrayToMap.map(person => (
 
         
@@ -132,13 +146,15 @@ const ConnectionPage = () => {
           <div className="connectionTile">
             <div className="imageBtn">
               <HomeModal open={open} setOpen={setOpen} person={person}/>
+              
               <div className="profileImageContainer"
                   style={{backgroundImage: `url(${person.profile_image})`}}>
               </div>
+              <p className="profileName" >{person.name}</p>
             </div>
               
             <div>
-              <p className="profileName" >{person.name}</p>
+              
               <div className="techContainer">
                 <p className="tech">{person.tech_one}</p>
                 <p className="tech">{person.tech_two}</p>
@@ -151,13 +167,31 @@ const ConnectionPage = () => {
           { //Check if message failed
         (person.match == false)
           ? <div className="buttonWrapper" >
-              <button onClick={() => updateMatch(person)}>Accept</button>
-              <button onClick={() => deleteConnection(person.user_id)}>Decline</button>
+              <Button
+                variant="contained"
+                color="primary"
+                size="small"
+                className={classes.button}
+                onClick={() => updateMatch(person)}
+              >
+                Accept
+              </Button>
+
+              <Button
+                variant="contained"
+                color="secondary"
+                size="small"
+                className={classes.button}
+                onClick={() => deleteConnection(person.user_id)}
+              >
+                Decline
+              </Button>
+             
             </div>
           
-          : <div> 
+          : <div > 
               <IconButton onClick={() => handleChat(person)}>
-                <ChatBubbleIcon className="chatBubble" fontSize="large"></ChatBubbleIcon>
+                <ChatBubbleIcon className={classes.chatBubble} fontSize="large"></ChatBubbleIcon>
               </IconButton>
               
             </div> 
@@ -171,6 +205,7 @@ const ConnectionPage = () => {
         </div>
       </div>
     ))}
+    </div>
     </div>
   )
 }
