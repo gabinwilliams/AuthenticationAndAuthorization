@@ -1,8 +1,24 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
+import { makeStyles } from '@material-ui/core/styles';
+import TextField from '@material-ui/core/TextField';
+
+
+
+const useStyles = makeStyles((theme) => ({
+  root: {
+    '& > *': {
+      margin: theme.spacing(1),
+      width: '25ch',
+    },
+  },
+}));
+
 
 function RegisterForm() {
+
+  const classes = useStyles();
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const errors = useSelector((store) => store.errors);
@@ -37,7 +53,25 @@ function RegisterForm() {
         </h3>
       )}
       <div>
-        <label htmlFor="username">
+
+      <form className={classes.root} noValidate autoComplete="off">
+        <TextField id="standard-basic" label="username"
+        value={username}
+        required
+        onChange={(event) => setUsername(event.target.value)}
+        />
+
+
+        <TextField id="standard-basic" label="password" 
+        id="standard-password-input"
+        type="password"
+        value={password}
+        required
+        onChange={(event) => setPassword(event.target.value)}
+        />
+        
+      </form>
+        {/* <label htmlFor="username">
           Username:
           <input
             type="text"
@@ -46,9 +80,9 @@ function RegisterForm() {
             required
             onChange={(event) => setUsername(event.target.value)}
           />
-        </label>
+        </label> */}
       </div>
-      <div>
+      {/* <div>
         <label htmlFor="password">
           Password:
           <input
@@ -59,7 +93,7 @@ function RegisterForm() {
             onChange={(event) => setPassword(event.target.value)}
           />
         </label>
-      </div>
+      </div> */}
       <div>
         <input className="btn" type="submit" name="submit" value="Register" />
       </div>
