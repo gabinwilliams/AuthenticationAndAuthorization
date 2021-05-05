@@ -49,7 +49,7 @@ const Messages = () => {
         <MessagesAppBar />
       </div>
       <div className="messageContainer">
-      {/* {filteredArray.map(chat =>  ( */}
+      
         
 
           
