@@ -9,7 +9,7 @@ Front to Back provides a social platform solution for software developers lookin
 
 Front to Back was developed in a 2 week Sprint.  The first 3 days were spent scoping the project.  The rest of the time was spent building and testing for bugs.
 
-To see the fully functional site, please visit: [Front to Back](Coming soon)
+To see the fully functional site, please visit: [Front to Back](Coming soon hosted on heroku)
 
 ## Screen Shot
 
