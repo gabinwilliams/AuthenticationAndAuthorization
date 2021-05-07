@@ -1,4 +1,5 @@
 
+
 # Front to Back
 
 ## Description
@@ -61,11 +62,17 @@ This application uses the following technologies:
 - [Material-UI](https://material-ui.com/)
 
 
+
+
 (a full list of dependencies can be found in `package.json`)
 
 
 ## Acknowledgement
 Thanks to all of the staff at [Prime Digital Academy](https://www.primeacademy.io) who equipped me with the skills to make this application a reality, especially my instructors Dev, Janna, and Dane Smith. Thank you to the EMIRP Cohort for the all of the collaboration throughout our group projects during the course.
 
+
 ## Support
 If you have suggestions or issues, please email me at gabinwilliams@gmail.com or find me at https://www.linkedin.com/in/gabin-williams/
+
+
+
