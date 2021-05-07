@@ -16,6 +16,7 @@ To see the fully functional site, please visit: [Front to Back](Coming soon host
 
 ![Front to Back: login](public/Images/LoginPage.png)
 ![Front to Back: home](public/Images/HomePage.png)
+![Front to Back: home gif](public/Images/FrontToBack.gif)
 ![Front to Back: edit profile](public/Images/EditProfilePage.png)
 ![Front to Back: connection](public/Images/ConnectionPage.png)
 ![Front to Back: chat](public/Images/ChatPage.png)
