@@ -10,7 +10,7 @@ Front to Back provides a social platform solution for software developers lookin
 
 Front to Back was developed in a 2 week Sprint.  The first 3 days were spent scoping the project.  The rest of the time was spent building and testing for bugs.
 
-To see the fully functional site, please visit: [Front to Back](Coming soon hosted on heroku)
+To see the fully functional site, please visit: [Front to Back](https://front-to-back.herokuapp.com/#/mainView)
 
 ## Screen Shot
 
@@ -71,6 +71,15 @@ This application uses the following technologies:
 ## Acknowledgement
 Thanks to all of the staff at [Prime Digital Academy](https://www.primeacademy.io) who equipped me with the skills to make this application a reality, especially my instructors Dev, Janna, and Dane Smith. Thank you to the EMIRP Cohort for the all of the collaboration throughout our group projects during the course.
 
+## Future Features
+- add mobile responsive design
+- conditionally render messages when profile bucket is empty or when connection page is empty
+- form validation
+- bug fix on tinder-swipe-card npm package when in mobile size view to allow clickable buttons within the component
+- add badges to messages icon
+- continue to style the entire app
+- add image upload on profile page
+- add sign up/sign in with google
 
 ## Support
 If you have suggestions or issues, please email me at gabinwilliams@gmail.com or find me at https://www.linkedin.com/in/gabin-williams/
