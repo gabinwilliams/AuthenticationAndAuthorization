@@ -79,8 +79,8 @@ export default function ProfileForm(props) {
     event.preventDefault();
     
 
-    if(name || image === '') {
-      swal("Oops!", "Please fill out name and add a photo", "warning");
+    if(name === '' || image === '' ) {
+      swal("Oops!", "Please fill out your name, add a photo and top 3 tech.", "warning");
       return;
     }else{
 
