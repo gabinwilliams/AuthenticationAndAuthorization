@@ -9,6 +9,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import InputLabel from '@material-ui/core/InputLabel';
 import MenuItem from '@material-ui/core/MenuItem';
 import FormHelperText from '@material-ui/core/FormHelperText';
+import swal from 'sweetalert';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 import './ProfileForm.css';
@@ -76,6 +77,12 @@ export default function ProfileForm(props) {
 
   const registerUserInfo = (event) => {
     event.preventDefault();
+    
+
+    if(name === '' || image === '' ) {
+      swal("Oops!", "Please fill out your name, add a photo and top 3 tech.", "warning");
+      return;
+    }else{
 
     dispatch({
       type: 'UPDATE_PROFILE',
@@ -95,7 +102,7 @@ export default function ProfileForm(props) {
     });
 
    history.push('/mainView');
-
+  }
   }; 
 
   
@@ -153,12 +160,10 @@ export default function ProfileForm(props) {
           defaultValue=""
           variant="outlined"
         />
-        {/* <ProfileTech tech={tech} setTech={setTech} /> */}
         <ProfileTechChip tech={tech} setTech={setTech}/>
         <button className="submitBtn" onClick={registerUserInfo} >submit</button>
       </div>
-      {/* <button onClick={registerUserInfo} >submit</button> */}
-      {/* <button className="submitBtn" onClick={registerUserInfo} >submit</button> */}
+     
     </form>
   );
 }
