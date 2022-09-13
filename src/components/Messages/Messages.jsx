@@ -15,15 +15,11 @@ const Messages = () => {
   const allMessages = useSelector((store) => store.messages);
 
   useEffect(() => {
-    // dispatch({ type: 'FETCH_USER' });
-    // dispatch({type: 'FETCH_LIKES'});
     dispatch({ type: "FETCH_MESSAGES" });
     dispatch({ type: "FETCH_CURRENT_CHAT" });
   }, [dispatch]);
 
   const filterMessages = () => {
-    console.log("Original messages:", allMessages);
-
     let filteredArray = allMessages.filter(
       (data) =>
         (data.user_id === user.id &&
@@ -32,7 +28,6 @@ const Messages = () => {
           data.liked_user_id == user.id)
     );
 
-    console.log("This is the filtered array:", filteredArray);
     return filteredArray;
   };
   let filteredArray = filterMessages();
@@ -40,7 +35,6 @@ const Messages = () => {
   return (
     <div>
       <div className="headerz">
-        {/* <MessagesHeader /> */}
         <MessagesAppBar />
       </div>
       <div className="messageContainer">
@@ -63,8 +57,6 @@ const Messages = () => {
             )}
           </div>
         ))}
-
-        {/* ))} */}
       </div>
       <div className="input">
         <MessagesInput chat={chat} setChat={setChat} />

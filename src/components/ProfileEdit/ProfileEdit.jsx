@@ -47,7 +47,6 @@ export default function ProfileForm(props) {
 
   const user = useSelector((store) => store.user);
 
-  // const[tech, setTech] = useState([]);
   const [image, setImage] = React.useState("");
   const [name, setName] = useState("");
   const [dev, setDev] = useState("");
@@ -192,10 +191,8 @@ export default function ProfileForm(props) {
             defaultValue={user.bio}
             variant="outlined"
           />
-          {/* <ProfileTech tech={tech} setTech={setTech} /> */}
           <ProfileTechChip tech={tech} setTech={setTech} />
         </div>
-        {/* <button onClick={registerUserInfo} >submit</button> */}
       </form>
     </div>
   );

@@ -17,9 +17,6 @@ const useStyles = makeStyles((theme) => ({
   button: {
     margin: theme.spacing(1),
   },
-  chatBubble: {
-    // paddingRight: 20,
-  },
 }));
 
 const ConnectionPage = () => {
@@ -37,21 +34,16 @@ const ConnectionPage = () => {
   }, [dispatch]);
 
   const filterArray = () => {
-    // let newNewArray = userProfiles.filter(data => data.id != user.id);
     let likedArray = fetchUserLikes.filter(
       (data) =>
         (data.liked_user_id == user.id && data.liked == true) ||
         (data.match == true && data.user_id != user.id)
     );
-    // let newArray = userProfiles.filter(data => data.id != user.id);
-    console.log("filtered array for likes", likedArray);
     return likedArray;
   };
   let arrayToMap = filterArray();
 
   const updateMatch = (person) => {
-    // console.log('Conditional render', match);
-    console.log(person.user_id, person.liked_user_id);
     dispatch({
       type: "UPDATE_MATCH",
       payload: {
@@ -77,7 +69,6 @@ const ConnectionPage = () => {
     axios
       .post("/api/user/current/chat", obj)
       .then((response) => {
-        // dispatch({ type: "FETCH_MESSAGES" });
         dispatch({ type: "FETCH_CURRENT_CHAT" });
       })
       .catch((err) => {

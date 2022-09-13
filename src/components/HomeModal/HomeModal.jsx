@@ -21,7 +21,6 @@ const useStyles = makeStyles((theme) => ({
     flexDirection: "column",
     alignItems: "center",
     backgroundColor: theme.palette.background.paper,
-    // border: '2px solid #000',
     boxShadow: theme.shadows[5],
     padding: theme.spacing(2, 4, 3),
     width: "70vw",
@@ -113,7 +112,6 @@ export default function HomeModal(props) {
                 <a className="github" href={props.person.github}>
                   Github
                 </a>
-                {/* <p className="github">{props.person.github}</p> */}
               </div>
             </div>
           </div>

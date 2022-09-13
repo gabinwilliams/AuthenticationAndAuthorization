@@ -5,7 +5,6 @@ import ProfileForm from "../ProfileForm/ProfileForm";
 import "./UserPage.css";
 
 function UserPage() {
-  // this component doesn't do much to start, just renders some user reducer info to the DOM
   const user = useSelector((store) => store.user);
   return (
     <div className="userPageContainer">
@@ -17,10 +16,8 @@ function UserPage() {
         </h4>
       </div>
       <ProfileForm />
-      {/* <LogOutButton className="btn" /> */}
     </div>
   );
 }
 
-// this allows us to use <App /> in index.js
 export default UserPage;

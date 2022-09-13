@@ -1,17 +1,9 @@
 .messageContainer {
   position: relative;
   display: flex;
-  /* height: 100vh; */
-  /* flex-wrap: wrap; */
   flex-direction: column;
-  /* justify-content: space-between; */
-
   margin: 20px 20px 200px 20px;
   padding: 50px 20px 100px 20px;
-
-  /* border: 2px solid black; */
-  /* border-radius: 10px;
-  box-shadow: 0px 18px 53px 0px rgba(0, 0, 0, 0.3); */
 }
 
 .input {
@@ -24,28 +16,18 @@
 .headerz {
   position: static;
   top: 0;
-  /* width: 100vw; */
   background-color: gray;
 }
 
-/* .chatContainer {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: space-between;
-} */
 .messageOne {
   position: relative;
-  /* display: flex; */
   width: fit-content;
   height: fit-content;
   align-items: center;
   max-width: 80vw;
   word-wrap: break-word;
   margin-bottom: 15px;
-  /* margin-right: 100px; */
   padding: 20px 20px 20px 5px;
-  /* padding: 30px; */
   border-radius: 20px;
   background-color: indianred;
 }
@@ -62,16 +44,14 @@
 
 .messageTwo {
   position: relative;
-  /* display: flex; */
   width: fit-content;
   height: fit-content;
   align-items: center;
   word-wrap: break-word;
   max-width: 80vw;
   margin-bottom: 15px;
-  /* margin-right: 100px; */
   padding: 20px 20px 20px 5px;
-  /* padding: 30px; */
+
   border-radius: 20px;
   background-color: gray;
 }
