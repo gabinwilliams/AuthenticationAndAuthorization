@@ -34,24 +34,12 @@ export default function Chips(props) {
   };
 
   const handleClick = (data) => {
-    // event.preventDefault()
-    console.info("You clicked the Chip:", data);
-    // if(props.tech.length < 3) {
-    // props.setTech([...props.tech, data])
     props.setTech(data);
-    // }
-    console.log("this is tech array:", props.tech);
   };
 
   return (
     <div component="div" className={classes.root}>
       {chipData.map((data) => {
-        // let icon;
-
-        // if (data.label === 'React') {
-        //   icon = <TagFacesIcon />;
-        // }
-
         return (
           <div key={data.key}>
             <Chip
@@ -63,14 +51,6 @@ export default function Chips(props) {
           </div>
         );
       })}
-
-      {/* <Chip
-        icon={<FaceIcon />}
-        label="Clickable deletable"
-        onClick={handleClick}
-        onDelete={handleDelete}
-        deleteIcon={<DoneIcon />}
-      /> */}
     </div>
   );
 }

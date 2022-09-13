@@ -71,7 +71,6 @@ function getStyles(name, personName, theme) {
 export default function MultipleSelect(props) {
   const classes = useStyles();
   const theme = useTheme();
-  // const [personName, setPersonName] = React.useState([]);
   const user = useSelector((store) => store.user);
 
   const handleChange = (event) => {

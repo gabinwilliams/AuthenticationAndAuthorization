@@ -6,10 +6,8 @@ import HomeCard from "../HomeCard/HomeCard";
 const Home = () => {
   return (
     <>
-      {/* <HomeHeader /> */}
       <HomeAppBar />
       <HomeCard />
-      {/* Buttons below tinder card */}
     </>
   );
 };

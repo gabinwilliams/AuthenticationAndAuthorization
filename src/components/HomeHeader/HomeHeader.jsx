@@ -25,8 +25,6 @@ const HomeHeader = () => {
 
       <h2>Front to Back</h2>
 
-      {/* <LogOutButton /> */}
-
       <IconButton onClick={handleClickConnection}>
         <ForumIcon className="headerIcon" fontSize="large" />
       </IconButton>

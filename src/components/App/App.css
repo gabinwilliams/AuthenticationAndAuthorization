@@ -50,8 +50,6 @@ img {
 
 /* This line makes the "Register" and "Login" buttons look like links */
 .btn_asLink {
-  /* position: absolute;
-  bottom: 300px; */
   padding: 0;
   border-width: 0;
   border-bottom: 1px solid #444;
@@ -106,21 +104,8 @@ Form Treatment
   background-position: center;
   margin: 0;
   border-radius: 0;
-  /* margin: 20px; 
-  padding: 20px; */
   height: 100vh;
 }
-
-/* .formPanel {
-  box-sizing: border-box;
-  width: 400px;
-  max-width: 100%;
-  padding: 25px;
-  margin: 0 auto 20px;
-  background-color: #efefef;
-  border-radius: 3px;
-  box-shadow: 0 1px 2px rgb(0, 0, 0, 0.4);
-} */
 
 input {
   margin: 5px;

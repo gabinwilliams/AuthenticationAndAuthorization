@@ -23,10 +23,6 @@ const ProfileEditHome = () => {
 
       <h2>Front to Back</h2>
       <LogOutButton />
-
-      {/* <IconButton>
-        <ForumIcon className="headerIcon" fontSize="large" />
-      </IconButton> */}
     </div>
   );
 };

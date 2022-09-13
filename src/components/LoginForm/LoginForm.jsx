@@ -37,7 +37,7 @@ function LoginForm() {
       dispatch({ type: "LOGIN_INPUT_ERROR" });
     }
     history.push("/mainView");
-  }; // end login
+  };
 
   return (
     <div
@@ -80,28 +80,6 @@ function LoginForm() {
               onChange={(event) => setPassword(event.target.value)}
             />
           </form>
-          {/* <label htmlFor="username">
-          Username:
-          <input
-            type="text"
-            name="username"
-            required
-            value={username}
-            onChange={(event) => setUsername(event.target.value)}
-          />
-        </label>
-      </div>
-      <div>
-        <label htmlFor="password">
-          Password:
-          <input
-            type="password"
-            name="password"
-            required
-            value={password}
-            onChange={(event) => setPassword(event.target.value)}
-          />
-        </label> */}
         </div>
         <div>
           <input className="btn" type="submit" name="submit" value="Log In" />

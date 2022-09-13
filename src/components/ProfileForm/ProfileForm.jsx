@@ -69,7 +69,6 @@ export default function ProfileForm(props) {
 
   const registerUserInfo = (event) => {
     event.preventDefault();
-    
 
     if (name === "" || image === "") {
       swal(

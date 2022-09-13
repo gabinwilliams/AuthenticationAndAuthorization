@@ -15,7 +15,6 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: "center",
     flexWrap: "wrap",
     borderRadius: 5,
-    // height: 150,
   },
   textField: {
     marginLeft: theme.spacing(1),
@@ -43,14 +42,6 @@ export default function LayoutTextFields(props) {
     dispatch({ type: "FETCH_CURRENT_CHAT" });
   }, [dispatch]);
 
-  // const filterMessages = () => {
-  //   console.log('Original messages:', allMessages);
-
-  //   let filteredArray = allMessages.filter(data => data.user_id === user.id && data.liked_user_id === currentChat[0].liked_user_id);
-
-  //   console.log('This is the filtered array:', filteredArray);
-  // }
-
   const handleChat = (event) => {
     props.setChat(event.target.value);
   };
@@ -77,29 +68,15 @@ export default function LayoutTextFields(props) {
       .catch((err) => {
         console.log("Error in POST /chat", err);
       });
-
-    // axios
-    // .post("/api/user/current/chat", obj)
-    // .then((response) => {
-    //   props.setChat('');
-    //   // dispatch({ type: "FETCH_MESSAGES" });
-    //   // dispatch({ type: 'FETCH_CURRENT_CHAT'});
-    // })
-    // .catch((err) => {
-    //   console.log("Error in POST /current/chat", err);
-    // });
   };
 
-  // let filteredArray = filterMessages();
   return (
     <div className={classes.root}>
       <div className={classes.chatField}>
         <TextField
           label="Chat"
           id="outlined-margin-normal"
-          // defaultValue="Default Value"
           className={classes.textField}
-          // helperText="Some important text"
           value={props.chat}
           margin="normal"
           variant="outlined"

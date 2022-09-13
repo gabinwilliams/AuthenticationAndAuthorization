@@ -22,8 +22,6 @@ const HomeCard = () => {
   }, []);
 
   const onSwipe = (id, direction) => {
-    console.log("You swiped: ", direction);
-
     if (direction === "right") {
       direction = true;
       let obj = {
@@ -31,53 +29,26 @@ const HomeCard = () => {
         liked: direction,
         liked_user_id: id,
       };
-      console.log("Swiped person:", obj);
       axios
         .post("/api/user/updateLikes", obj)
         .then((response) => {
-          console.log("POST obj from Swipe:", response);
-          // dispatch({type: 'FETCH_USER_LIKES'})
           dispatch({ type: "FETCH_LIKES" });
         })
         .catch((err) => {
           console.log("Error in POST", err);
         });
     }
-    // if(direction === 'left') {
-    //   direction = false;
-
-    //   let obj = {
-    //     user_id: user.id,
-    //     liked: direction,
-    //     liked_user_id: id
-    //   }
-    //   axios
-    // .post("/api/user/updateLikes", obj)
-    // .then((response) => {
-    //   console.log('POST obj from Swipe:', response);
-    //   // dispatch({type: 'FETCH_LIKES'});
-    // })
-    // .catch((err) => {
-    //   console.log("Error in POST", err);
-    // });
-
-    // }
   };
-
-  console.log("filtered array: ", filteredProfiles);
 
   return (
     <div>
       <div className="cardContainer">
         {filteredProfiles.map((person) => (
           <>
-            {/* <HomeModal  person={person}/> */}
             <TinderCard
               key={person.name}
               className="swipe"
-              // onCardLeftScreen={() => onCardLeftScreen( person.id)}
               onSwipe={(direction) => onSwipe(person.id, direction)}
-              // prop from tinder-card library to prevent swiping up or down
               preventSwipe={["up", "down"]}
             >
               <div

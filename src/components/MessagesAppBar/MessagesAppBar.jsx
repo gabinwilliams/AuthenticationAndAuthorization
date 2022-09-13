@@ -17,16 +17,11 @@ import Menu from "@material-ui/core/Menu";
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    // flexGrow: 1,
     display: "flex",
     marginBottom: 100,
-    // justifyContent: 'space-between',
   },
   menuButton: {
     marginRight: theme.spacing(2),
-  },
-  title: {
-    // flexGrow: 1,
   },
   Toolbar: {
     display: "flex",
@@ -67,12 +62,6 @@ export default function MenuAppBar() {
 
   return (
     <div className={classes.root}>
-      {/* <FormGroup>
-        <FormControlLabel
-          control={<Switch checked={auth} onChange={handleChange} aria-label="login switch" />}
-          label={auth ? 'Logout' : 'Login'}
-        />
-      </FormGroup> */}
       <AppBar position="fixed">
         <Toolbar className={classes.Toolbar}>
           <IconButton
