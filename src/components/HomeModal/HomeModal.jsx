@@ -1,32 +1,31 @@
-import React, {useState} from 'react';
-import './HomeModal.css';
-import PropTypes from 'prop-types';
+import React, { useState } from "react";
+import "./HomeModal.css";
+import PropTypes from "prop-types";
 import { useDispatch, useSelector } from "react-redux";
-import { makeStyles } from '@material-ui/core/styles';
-import Modal from '@material-ui/core/Modal';
-import Avatar from '@material-ui/core/Avatar';
-import Backdrop from '@material-ui/core/Backdrop';
-import { useSpring, animated } from 'react-spring/web.cjs'; // web.cjs is required for IE 11 support
-import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+import { makeStyles } from "@material-ui/core/styles";
+import Modal from "@material-ui/core/Modal";
+import Avatar from "@material-ui/core/Avatar";
+import Backdrop from "@material-ui/core/Backdrop";
+import { useSpring, animated } from "react-spring/web.cjs"; // web.cjs is required for IE 11 support
+import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import IconButton from "@material-ui/core/IconButton";
-
 
 const useStyles = makeStyles((theme) => ({
   modal: {
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
   },
   paper: {
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
     backgroundColor: theme.palette.background.paper,
     // border: '2px solid #000',
     boxShadow: theme.shadows[5],
     padding: theme.spacing(2, 4, 3),
-    width: '70vw',
-    height: '60vh',
+    width: "70vw",
+    height: "60vh",
   },
 }));
 
@@ -65,9 +64,7 @@ export default function HomeModal(props) {
   const classes = useStyles();
   const [open, setOpen] = useState(false);
 
-
   const handleOpen = () => {
-    
     setOpen(true);
   };
 
@@ -77,12 +74,10 @@ export default function HomeModal(props) {
 
   return (
     <div>
-      <IconButton className="modalBtn"  onClick={handleOpen}>
-        <ExpandMoreIcon fontSize="large">
-
-        </ExpandMoreIcon>
+      <IconButton className="modalBtn" onClick={handleOpen}>
+        <ExpandMoreIcon fontSize="large"></ExpandMoreIcon>
       </IconButton>
-     
+
       <Modal
         aria-labelledby="spring-modal-title"
         aria-describedby="spring-modal-description"
@@ -97,11 +92,10 @@ export default function HomeModal(props) {
       >
         <Fade in={open}>
           <div className={classes.paper}>
-            <div className="imageContainer"
-              style={{backgroundImage: `url(${props.person.profile_image})`}}
-            >
-              
-            </div>
+            <div
+              className="imageContainer"
+              style={{ backgroundImage: `url(${props.person.profile_image})` }}
+            ></div>
             <div className="modalTech">
               <p className="modalTechChip">{props.person.tech_one}</p>
               <p className="modalTechChip">{props.person.tech_two}</p>
@@ -116,12 +110,12 @@ export default function HomeModal(props) {
               </div>
               <div className="devType">
                 {/* <link rel="stylesheet" href={props.person.github}/> */}
-                <a className="github" href={props.person.github}>Github</a>
+                <a className="github" href={props.person.github}>
+                  Github
+                </a>
                 {/* <p className="github">{props.person.github}</p> */}
               </div>
             </div>
-          
-            
           </div>
         </Fade>
       </Modal>

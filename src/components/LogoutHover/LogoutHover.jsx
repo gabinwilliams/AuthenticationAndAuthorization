@@ -1,12 +1,12 @@
-import React from 'react';
-import Popover from '@material-ui/core/Popover';
-import Typography from '@material-ui/core/Typography';
-import { makeStyles } from '@material-ui/core/styles';
-import LogOutButton from '../LogOutButton/LogOutButton';
+import React from "react";
+import Popover from "@material-ui/core/Popover";
+import Typography from "@material-ui/core/Typography";
+import { makeStyles } from "@material-ui/core/styles";
+import LogOutButton from "../LogOutButton/LogOutButton";
 
 const useStyles = makeStyles((theme) => ({
   popover: {
-    pointerEvents: 'none',
+    pointerEvents: "none",
   },
   paper: {
     padding: theme.spacing(1),
@@ -30,7 +30,7 @@ export default function MouseOverPopover() {
   return (
     <div>
       <Typography
-        aria-owns={open ? 'mouse-over-popover' : undefined}
+        aria-owns={open ? "mouse-over-popover" : undefined}
         aria-haspopup="true"
         onMouseEnter={handlePopoverOpen}
         onMouseLeave={handlePopoverClose}
@@ -46,12 +46,12 @@ export default function MouseOverPopover() {
         open={open}
         anchorEl={anchorEl}
         anchorOrigin={{
-          vertical: 'bottom',
-          horizontal: 'left',
+          vertical: "bottom",
+          horizontal: "left",
         }}
         transformOrigin={{
-          vertical: 'top',
-          horizontal: 'left',
+          vertical: "top",
+          horizontal: "left",
         }}
         onClose={handlePopoverClose}
         disableRestoreFocus

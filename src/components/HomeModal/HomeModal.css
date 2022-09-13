@@ -9,20 +9,19 @@ p {
   padding: 5px;
   font-size: 16px;
   border-radius: 25px;
-  background-color: rgba(186, 186, 182, .5);
+  background-color: rgba(186, 186, 182, 0.5);
 }
 
 .modalTech {
-   display: flex;
-  
+  display: flex;
 }
 
-.modalTechChip{
+.modalTechChip {
   margin: 10px 5px;
   padding: 5px;
   font-size: 12px;
   border-radius: 25px;
-  background-color: rgba(186, 186, 182, .5);
+  background-color: rgba(186, 186, 182, 0.5);
 }
 .bioContainer {
   display: flex;
@@ -31,7 +30,7 @@ p {
   border-radius: 5px;
   padding: 20px;
   margin-top: 10px;
-  background-color: rgba(170, 175, 173, .1);
+  background-color: rgba(170, 175, 173, 0.1);
   box-shadow: 0px 18px 20px 0px rgba(0, 0, 0, 0.3);
 }
 
@@ -39,24 +38,23 @@ p {
   text-decoration-style: none;
   color: white;
   display: flex;
-  
 }
 
-a { color: inherit; } 
+a {
+  color: inherit;
+}
 
 .devType {
   margin-top: 5px;
   margin-left: 10px;
   background-color: teal;
-  
+
   border-radius: 5px;
-  
 }
 
 .github {
-  padding:  0px 5px 5px 5px;
+  padding: 0px 5px 5px 5px;
 }
-
 
 .imageContainer {
   background-size: cover;
@@ -66,6 +64,4 @@ a { color: inherit; }
   width: 150px;
   height: 150px;
   box-shadow: 0px 18px 20px 0px rgba(0, 0, 0, 0.3);
-  
 }
-

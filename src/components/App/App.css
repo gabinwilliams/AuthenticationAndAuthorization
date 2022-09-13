@@ -2,32 +2,18 @@ html,
 body,
 #react-root {
   height: 100%;
-  
 }
 
 body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   margin: 0px;
   padding: 0px;
-  
 }
 
 img {
   display: inline-block;
   max-width: 100%;
 }
-
-/* --------------------------------------------------------------------------------
-Container
--------------------------------------------------------------------------------- */
-
-/* .container {
-  padding: 20px;
-} */
-
-/* --------------------------------------------------------------------------------
-Button
--------------------------------------------------------------------------------- */
 
 .btn {
   display: inline-block;
@@ -105,11 +91,10 @@ Form Treatment
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: rgba(220, 220, 220, .8);
-  height:400px;
+  background-color: rgba(220, 220, 220, 0.8);
+  height: 400px;
   width: 250px;
   border-radius: 10px;
- 
 }
 
 .container {

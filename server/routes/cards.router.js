@@ -7,15 +7,13 @@ const {
 const encryptLib = require("../modules/encryption");
 const userStrategy = require("../strategies/user.strategy");
 
-/**
- * GET route template
-//  */
+// GET profiles
 router.get("/", rejectUnauthenticated, (req, res) => {
   const query = ` WITH unchosen as ( -- Create the variable and name it
     SELECT u.* -- Return every column from "user", aliased as u
     FROM "user" as u -- Add "user" table, alias as u
     JOIN "user_likes" as liked ON liked.liked_user_id = u.id -- JOIN "user_likes" aliased as liked
-    WHERE liked.liked = false AND liked.user_id = $1 -- Replace 12 with req.user.id / $1
+    WHERE liked.liked = false AND liked.user_id = $1 
     -- filter by liked=false, not authenticated user.
     GROUP BY u.id -- returns distinct user ids.
 )
@@ -46,11 +44,12 @@ WHERE u.id IN (SELECT id FROM unchosen) OR
       res.send(result.rows);
     })
     .catch((err) => {
-      console.log("ERROR: Get all profiles", err);
+      console.log("ERROR: Getting all profiles", err);
       res.sendStatus(500);
     });
 });
 
+// GET Profile Likes
 router.get("/likes", rejectUnauthenticated, (req, res) => {
   const query = `SELECT "user".name, "user".id AS user_id, "user".active, "user".bio, "user".dev_type, "user".github, "user".profile_image, "user".tech_one, "user".tech_two, "user".tech_three, "user".username, "user_likes".liked, "user_likes".liked_user_id, "user_likes".match
   FROM "user_likes"
@@ -64,16 +63,13 @@ router.get("/likes", rejectUnauthenticated, (req, res) => {
       res.send(result.rows);
     })
     .catch((err) => {
-      console.log("ERROR: Get all profiles", err);
+      console.log("ERROR: Getting profile likes", err);
       res.sendStatus(500);
     });
 });
 
-/**
- * POST route template
- */
+// Update profile matches
 router.put("/match", rejectUnauthenticated, (req, res) => {
-  console.log("In POST /match", req.body);
   const queryText = `UPDATE "user_likes" 
     SET "match" = $1
     WHERE "user_id" = ${req.body.user_id} AND "liked_user_id" = ${req.body.liked_user_id} OR "user_id" = ${req.body.liked_user_id} AND "liked_user_id" = ${req.body.user_id}
@@ -86,7 +82,7 @@ router.put("/match", rejectUnauthenticated, (req, res) => {
       res.sendStatus(500);
     });
 });
-
+// Remove requested like from connection page
 router.delete("/connection/request/:id", rejectUnauthenticated, (req, res) => {
   console.log("In DELETE /connection/request", req.params);
   const queryText = `

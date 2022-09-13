@@ -1,40 +1,39 @@
-import React, { useEffect } from 'react';
+import React, { useEffect } from "react";
 import {
   HashRouter as Router,
   Route,
   Redirect,
   Switch,
-} from 'react-router-dom';
+} from "react-router-dom";
 
-import { useDispatch } from 'react-redux';
+import { useDispatch } from "react-redux";
 
-import Nav from '../Nav/Nav';
-import Footer from '../Footer/Footer';
+import Nav from "../Nav/Nav";
+import Footer from "../Footer/Footer";
 
-import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
+import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
 
-import AboutPage from '../AboutPage/AboutPage';
-import UserPage from '../UserPage/UserPage';
-import InfoPage from '../InfoPage/InfoPage';
-import LandingPage from '../LandingPage/LandingPage';
-import LoginPage from '../LoginPage/LoginPage';
-import RegisterPage from '../RegisterPage/RegisterPage';
-import Home from '../Home/Home';
-import ProfileEdit from '../ProfileEdit/ProfileEdit';
-import ConnectionPage from '../ConnectionPage/ConnectionPage';
-import Messages from '../Messages/Messages';
+import AboutPage from "../AboutPage/AboutPage";
+import UserPage from "../UserPage/UserPage";
+import InfoPage from "../InfoPage/InfoPage";
+import LandingPage from "../LandingPage/LandingPage";
+import LoginPage from "../LoginPage/LoginPage";
+import RegisterPage from "../RegisterPage/RegisterPage";
+import Home from "../Home/Home";
+import ProfileEdit from "../ProfileEdit/ProfileEdit";
+import ConnectionPage from "../ConnectionPage/ConnectionPage";
+import Messages from "../Messages/Messages";
 
-import './App.css';
+import "./App.css";
 
 function App() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch({ type: 'FETCH_USER' });
-    dispatch({type: 'FETCH_LIKES'});
-    dispatch({type: 'FETCH_MESSAGES'});
-    dispatch({ type: 'FETCH_CURRENT_CHAT'});
-    
+    dispatch({ type: "FETCH_USER" });
+    dispatch({ type: "FETCH_LIKES" });
+    dispatch({ type: "FETCH_MESSAGES" });
+    dispatch({ type: "FETCH_CURRENT_CHAT" });
   }, [dispatch]);
 
   return (
@@ -82,11 +81,7 @@ function App() {
             <InfoPage />
           </ProtectedRoute> */}
 
-          <ProtectedRoute
-            
-            exact
-            path="/profileEdit"
-          >
+          <ProtectedRoute exact path="/profileEdit">
             <ProfileEdit />
           </ProtectedRoute>
 

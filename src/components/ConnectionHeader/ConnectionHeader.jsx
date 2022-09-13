@@ -1,19 +1,18 @@
 import React from "react";
-import './ProfileEditHeader.css';
-import { useHistory } from 'react-router-dom';
-import LogOutButton from '../LogOutButton/LogOutButton';
+import "./ProfileEditHeader.css";
+import { useHistory } from "react-router-dom";
+import LogOutButton from "../LogOutButton/LogOutButton";
 
 import ForumIcon from "@material-ui/icons/Forum";
 import IconButton from "@material-ui/core/IconButton";
-import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
+import ArrowBackIosIcon from "@material-ui/icons/ArrowBackIos";
 
 const ProfileEditHome = () => {
   const history = useHistory();
 
   const handleClick = () => {
-
-    history.push('/mainView');
-  }
+    history.push("/mainView");
+  };
 
   return (
     <div className="connectionHeader">

@@ -1,8 +1,7 @@
-
 .formContainer {
   position: relative;
   margin: 150px 20px 20px 20px;
-  padding:  20px 20px 20px 20px;
+  padding: 20px 20px 20px 20px;
   /* height: 75vh; */
   /* border: 2px solid black; */
   border-radius: 10px;
@@ -14,4 +13,3 @@
   top: 30px;
   right: 35px;
 }
-

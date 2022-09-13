@@ -1,10 +1,7 @@
-
 .connectionContainer {
-  
   /* position: relative; */
   display: flex;
   /* justify-content: space-between; */
-
 }
 
 .connectionPageContainer {
@@ -12,15 +9,11 @@
   margin: 50px;
 }
 
-
-
 .profileName {
   display: flex;
   margin-left: 20px;
   color: gray;
-
 }
-
 
 .tech {
   display: flex;
@@ -28,24 +21,20 @@
   padding: 5px;
   font-size: 16px;
   border-radius: 25px;
-  background-color: rgba(186, 186, 182, .5);
-  
+  background-color: rgba(186, 186, 182, 0.5);
 }
 
-.imageBtn{
+.imageBtn {
   display: flex;
   align-items: center;
-  
-  
 }
 
-.buttonWrapper{
+.buttonWrapper {
   display: flex;
   flex-direction: column;
- 
 }
 
-.connectionTile{
+.connectionTile {
   position: relative;
   display: flex;
   /* flex-wrap: wrap; */
@@ -53,17 +42,14 @@
   align-items: center;
   /* justify-content: center; */
   /* flex-direction: column; */
-  margin: 10px 10px 10px 10px; 
+  margin: 10px 10px 10px 10px;
   width: 75vw;
   min-width: 300px;
-  
-  
+
   height: 25vh;
   border-radius: 10px;
-  background-color: rgba(170, 175, 173, .1);
+  background-color: rgba(170, 175, 173, 0.1);
   box-shadow: 0px 10px 10px 0px rgba(0, 0, 0, 0.3);
-  
- 
 }
 
 .buttonsContainer {
@@ -81,8 +67,4 @@
   width: 100px;
   height: 100px;
   /* box-shadow: 0px 5px 0px 0px rgba(0, 0, 0, 0.3); */
-  
 }
-
-
-
