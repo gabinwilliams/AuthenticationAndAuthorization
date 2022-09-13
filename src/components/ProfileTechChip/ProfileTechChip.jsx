@@ -1,16 +1,16 @@
-import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import clsx from 'clsx';
-import './ProfileTechChip.css';
-import { makeStyles, useTheme } from '@material-ui/core/styles';
-import Input from '@material-ui/core/Input';
-import InputLabel from '@material-ui/core/InputLabel';
-import MenuItem from '@material-ui/core/MenuItem';
-import FormControl from '@material-ui/core/FormControl';
-import ListItemText from '@material-ui/core/ListItemText';
-import Select from '@material-ui/core/Select';
-import Checkbox from '@material-ui/core/Checkbox';
-import Chip from '@material-ui/core/Chip';
+import React from "react";
+import { useDispatch, useSelector } from "react-redux";
+import clsx from "clsx";
+import "./ProfileTechChip.css";
+import { makeStyles, useTheme } from "@material-ui/core/styles";
+import Input from "@material-ui/core/Input";
+import InputLabel from "@material-ui/core/InputLabel";
+import MenuItem from "@material-ui/core/MenuItem";
+import FormControl from "@material-ui/core/FormControl";
+import ListItemText from "@material-ui/core/ListItemText";
+import Select from "@material-ui/core/Select";
+import Checkbox from "@material-ui/core/Checkbox";
+import Chip from "@material-ui/core/Chip";
 
 const useStyles = makeStyles((theme) => ({
   formControl: {
@@ -19,8 +19,8 @@ const useStyles = makeStyles((theme) => ({
     maxWidth: 300,
   },
   chips: {
-    display: 'flex',
-    flexWrap: 'wrap',
+    display: "flex",
+    flexWrap: "wrap",
   },
   chip: {
     margin: 2,
@@ -42,22 +42,21 @@ const MenuProps = {
 };
 
 const names = [
-  'Angular',
-  'jQuery',
-  'Polymer',
-  'React',
-  'Vue.js',
-  'Next.js',
-  'JavaScript',
-  'Python',
-  'TypeScript',
-  'Ruby',
-  'Node',
-  'PostgreSQL',
-  'MongoDB',
-  'Redux',
-  'Redux-Saga',
-  
+  "Angular",
+  "jQuery",
+  "Polymer",
+  "React",
+  "Vue.js",
+  "Next.js",
+  "JavaScript",
+  "Python",
+  "TypeScript",
+  "Ruby",
+  "Node",
+  "PostgreSQL",
+  "MongoDB",
+  "Redux",
+  "Redux-Saga",
 ];
 
 function getStyles(name, personName, theme) {
@@ -75,26 +74,14 @@ export default function MultipleSelect(props) {
   // const [personName, setPersonName] = React.useState([]);
   const user = useSelector((store) => store.user);
 
-  
-
-  
   const handleChange = (event) => {
     console.log(props.personName);
     props.setTech(event.target.value);
-  
-
-  
-    
   };
 
-  
-  
   return (
     <div>
-      
-     
       <FormControl className={classes.formControl}>
-      
         <InputLabel id="demo-multiple-chip-label">Chip</InputLabel>
         <Select
           labelId="demo-multiple-chip-label"
@@ -113,20 +100,23 @@ export default function MultipleSelect(props) {
           MenuProps={MenuProps}
         >
           {names.map((name) => (
-            <MenuItem key={name} value={name} style={getStyles(name, props.tech, theme)}>
+            <MenuItem
+              key={name}
+              value={name}
+              style={getStyles(name, props.tech, theme)}
+            >
               {name}
             </MenuItem>
           ))}
         </Select>
       </FormControl>
-        <p className="techTitle">Current Top 3 Tech</p>
-        <hr/>
+      <p className="techTitle">Current Top 3 Tech</p>
+      <hr />
       <div className="currentTech">
         <p className="techP">{user.tech_one}</p>
         <p className="techP">{user.tech_two}</p>
         <p className="techP">{user.tech_three}</p>
       </div>
-      
     </div>
   );
 }

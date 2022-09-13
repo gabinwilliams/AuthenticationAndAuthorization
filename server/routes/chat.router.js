@@ -1,58 +1,43 @@
-const express = require('express');
-const pool = require('../modules/pool');
+const express = require("express");
+const pool = require("../modules/pool");
 const router = express.Router();
 const {
   rejectUnauthenticated,
-} = require('../modules/authentication-middleware');
-const encryptLib = require('../modules/encryption');
-const userStrategy = require('../strategies/user.strategy');
+} = require("../modules/authentication-middleware");
+const encryptLib = require("../modules/encryption");
+const userStrategy = require("../strategies/user.strategy");
 
-/**
- * GET route template
- */
- router.get('/messages', (req, res) => {
-
-  
-  const query = `SELECT * FROM "messages";`
-
-  // try{
-  //     const response = await pool.query(query);
-  //     res.send(response.rows)
-  // }catch(error){
-  //     console.log('Error in GET /messages', error);
-  // }
-  pool.query(query)
-    .then( result => {
-     
+router.get("/messages", (req, res) => {
+  const query = `SELECT * FROM "messages";`;
+  pool
+    .query(query)
+    .then((result) => {
       res.send(result.rows);
     })
-    .catch(err => {
-      console.log('ERROR: Get all profiles', err);
-      res.sendStatus(500)
-    })
-
+    .catch((err) => {
+      console.log("ERROR: Get all profiles", err);
+      res.sendStatus(500);
+    });
 });
 
-router.get('/currentChat', (req, res) => {
+router.get("/currentChat", (req, res) => {
+  const query = `SELECT * FROM "current_chat";`;
 
-  const query = `SELECT * FROM "current_chat";`
-
-  pool.query(query)
-    .then( result => {
-     
+  pool
+    .query(query)
+    .then((result) => {
       res.send(result.rows);
     })
-    .catch(err => {
-      console.log('ERROR: Get currentChat', err);
-      res.sendStatus(500)
-    })
-
+    .catch((err) => {
+      console.log("ERROR: Get currentChat", err);
+      res.sendStatus(500);
+    });
 });
 
 /**
  * POST route template
  */
-router.post('/', (req, res) => {
+router.post("/", (req, res) => {
   // POST route code here
 });
 

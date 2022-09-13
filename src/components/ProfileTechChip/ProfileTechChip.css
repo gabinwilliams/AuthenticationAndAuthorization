@@ -5,18 +5,17 @@
   bottom: 30px;
 }
 
-.techP{
+.techP {
   /* margin: 10px; */
   margin: 5px 5px;
   padding: 10px;
   font-size: 16px;
   border-radius: 25px;
-  background-color: rgba(186, 186, 182, .5);
+  background-color: rgba(186, 186, 182, 0.5);
 }
 
-.techTitle{
+.techTitle {
   color: gray;
   margin-top: 10px;
   margin-left: 10px;
 }
-

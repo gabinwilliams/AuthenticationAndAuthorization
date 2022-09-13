@@ -1,7 +1,7 @@
-import React from 'react';
-import { useDispatch } from 'react-redux';
-import ExitToAppIcon from '@material-ui/icons/ExitToApp';
-import IconButton from '@material-ui/core/IconButton';
+import React from "react";
+import { useDispatch } from "react-redux";
+import ExitToAppIcon from "@material-ui/icons/ExitToApp";
+import IconButton from "@material-ui/core/IconButton";
 
 function LogOutButton(props) {
   const dispatch = useDispatch();
@@ -16,7 +16,7 @@ function LogOutButton(props) {
     //   Log Out
     // </button>
 
-    <IconButton color="inherit" onClick={() => dispatch({ type: 'LOGOUT' })}>
+    <IconButton color="inherit" onClick={() => dispatch({ type: "LOGOUT" })}>
       <ExitToAppIcon></ExitToAppIcon>
     </IconButton>
   );

@@ -47,7 +47,7 @@ CREATE TABLE "current_chat" (
 );
 
 
--- BIG SORTING QUERY to make sure profiles that the user has liked, will not show up in the users fee
+-- BIG SORTING QUERY to make sure profiles that the user has liked, will not show up in the users feed
 
 WITH unchosen as ( -- Create the variable and name it
     SELECT u.* -- Return every column from "user", aliased as u

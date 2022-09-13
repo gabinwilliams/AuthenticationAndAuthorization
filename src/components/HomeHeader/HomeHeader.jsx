@@ -1,6 +1,6 @@
 import React from "react";
-import { useHistory } from 'react-router-dom';
-import LogOutButton from '../LogOutButton/LogOutButton';
+import { useHistory } from "react-router-dom";
+import LogOutButton from "../LogOutButton/LogOutButton";
 import "./HomeHeader.css";
 import PersonIcon from "@material-ui/icons/Person";
 import ForumIcon from "@material-ui/icons/Forum";
@@ -10,14 +10,12 @@ const HomeHeader = () => {
   const history = useHistory();
 
   const handleClickProfile = () => {
-
-    history.push('/profileEdit');
-  }
+    history.push("/profileEdit");
+  };
 
   const handleClickConnection = () => {
-
-    history.push('/connection');
-  }
+    history.push("/connection");
+  };
 
   return (
     <div className="header">
