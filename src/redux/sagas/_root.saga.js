@@ -6,6 +6,7 @@ import profileInfoSaga from "./profileInfo.saga";
 import fetchCardsSaga from "./fetchCards.saga";
 import chatSaga from "./chat.saga";
 
+// Saga is basically an action listener with a bunch of async related helper functions
 // rootSaga is the primary saga.
 // It bundles up all of the other sagas so our project can use them.
 // This is imported in index.js as rootSaga

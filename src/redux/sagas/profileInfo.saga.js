@@ -2,10 +2,8 @@ import { put, takeLatest } from "redux-saga/effects";
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 
-// worker Saga: will be fired on "REGISTER" actions
 function* registerUserInfo(action) {
   try {
-    // passes the username and password from the payload to the server
     yield axios.post("/api/user/registerInfo", action.payload);
     yield put({ type: "FETCH_USER" });
   } catch (error) {
